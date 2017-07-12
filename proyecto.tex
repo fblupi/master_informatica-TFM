@@ -1,0 +1,177 @@
+\documentclass[a4paper,11pt]{book}
+\usepackage{listings}
+\usepackage{xspace}
+\usepackage{url}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{pdfpages}
+
+\decimalpoint
+\usepackage{dcolumn}
+\newcolumntype{.}{D{.}{\esperiod}{-1}}
+\makeatletter
+\addto\shorthandsspanish{\let\esperiod\es@period@code}
+\makeatother
+
+\RequirePackage{verbatim}
+\usepackage{fancyhdr}
+\usepackage{graphics, graphicx, float}
+\usepackage{afterpage}
+
+\usepackage{longtable}
+
+\usepackage[pdfborder={000}]{hyperref}
+
+% ********************************************************************
+% Re-usable information
+% ********************************************************************
+\newcommand{\myTitle}{3DCurator\xspace}
+\newcommand{\mySubtitle}{Sistema gráfico de ayuda al diagnóstico e intervención de esculturas mediante datos médicos volumétricos\xspace}
+\newcommand{\myEnglishSubtitle}{Graphic system to aid the diagnosis and intervention of sculptures using volumetric medical data\xspace}
+\newcommand{\myDegree}{Máster en Ingeniería Informática\xspace}
+\newcommand{\myName}{Francisco Javier Bolívar Lupiáñez\xspace}
+\newcommand{\myProf}{Francisco Javier Melero Rus\xspace}
+\newcommand{\myFaculty}{Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación\xspace}
+\newcommand{\myFacultyShort}{E.T.S. de Ingenierías Informática y de Telecomunicación\xspace}
+\newcommand{\myDepartment}{Departamento de Lenguajes y Sistemas Informáticos\xspace}
+\newcommand{\myUni}{\protect{Universidad de Granada}\xspace}
+\newcommand{\myLocation}{Granada\xspace}
+\newcommand{\myTime}{\today\xspace}
+
+
+\hypersetup{
+pdfauthor = {\myName (fblupi@correo.ugr.es)},
+pdftitle = {\myTitle},
+pdfsubject = {},
+pdfkeywords = {3DCurator, informática gráfica, renderizado de volúmenes, tomografía computarizada, escultura policromada de madera, restauración, conservador de arte},
+pdfproducer = {pdflatex}
+}
+
+\usepackage{url}
+\usepackage{colortbl,longtable}
+\usepackage[stable]{footmisc}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LO]{\leftmark}
+\fancyhead[RE]{\rightmark}
+\fancyhead[RO,LE]{\textbf{\thepage}}
+\renewcommand{\chaptermark}[1]{\markboth{\textbf{#1}}{}}
+\renewcommand{\sectionmark}[1]{\markright{\textbf{\thesection. #1}}}
+
+\setlength{\headheight}{1.5\headheight}
+
+\newcommand*\justify{
+	\fontdimen2\font=0.4em
+	\fontdimen3\font=0.2em
+	\fontdimen4\font=0.1em
+	\fontdimen7\font=0.1em
+	\hyphenchar\font=`\-
+}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+\definecolor{gray30}{gray}{.94}
+
+\lstset{ frame=Ltb,
+     framerule=0.5pt,
+     aboveskip=0.5cm,
+     framextopmargin=3pt,
+     framexbottommargin=3pt,
+     framexleftmargin=0.1cm,
+     framesep=0pt,
+     rulesep=.4pt,
+     backgroundcolor=\color{gray97},
+     rulesepcolor=\color{black},
+     stringstyle=\ttfamily,
+     showstringspaces = false,
+     basicstyle=\scriptsize\ttfamily,
+     commentstyle=\color{gray45},
+     keywordstyle=\bfseries,
+     numbers=left,
+     numbersep=6pt,
+     numberstyle=\tiny,
+     numberfirstline = false,
+     breaklines=true,
+}
+
+\lstnewenvironment{listing}[1][]
+   {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+
+\lstdefinestyle{C} {
+	basicstyle=\scriptsize,
+	frame=single,
+	language=C,
+	numbers=left
+}
+
+\lstdefinestyle{C++} {
+	basicstyle=\small,
+	frame=single,
+	backgroundcolor=\color{gray30},
+	language=C++,
+	numbers=left
+}
+
+\lstdefinestyle{Consola} {
+   	basicstyle=\scriptsize\bf\ttfamily,
+    backgroundcolor=\color{gray30},
+    frame=single,
+    language=shell,
+    numbers=none
+}
+
+\lstdefinestyle{XML} {
+	basicstyle=\scriptsize,
+	frame=single,
+	language=XML,
+	numbers=left
+}
+
+\newcommand{\bigrule}{\titlerule[0.5mm]}
+
+\makeatletter
+\def\clearpage{%
+  \ifvmode
+    \ifnum \@dbltopnum =\m@ne
+      \ifdim \pagetotal <\topskip
+        \hbox{}
+      \fi
+    \fi
+  \fi
+  \newpage
+  \thispagestyle{empty}
+  \write\m@ne{}
+  \vbox{}
+  \penalty -\@Mi
+}
+\makeatother
+
+\usepackage{pdfpages}
+\begin{document}
+\input{portada/portada}
+\input{prefacios/prefacio}
+\frontmatter
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+\setlength{\parskip}{5pt}
+
+\input{capitulos/introduccion}
+\input{capitulos/requisitos}
+\input{capitulos/planificacion}
+\input{capitulos/analisis}
+\input{capitulos/diseno}
+\input{capitulos/implementacion}
+\input{capitulos/ejemplos}
+\input{capitulos/conclusiones}
+
+\bibliography{bibliografia/bibliografia}
+\addcontentsline{toc}{chapter}{Bibliografía}
+\bibliographystyle{plain}
+
+\end{document}
