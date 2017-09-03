@@ -213,3 +213,16 @@ Los métodos de segmentación basada en crecimiento de regiones que utilizan umb
 Los métodos de segmentación basados en bordes como el \textit{livewire} \cite{mortensen95} podrían resultar efectivos pues el borde que separa dos piezas de madera es visualmente diferenciable. No obstante, este método necesita de una supervisión humana y, aunque sea más preciso y rápido que una segmentación manual, se debería seguir realizando corte a corte.
 
 Como vemos, ninguno de los métodos que no requieren de supervisión humana son efectivos a la hora de resolver nuestro problema. Es por ello que, definitivamente, hay que desarrollar uno propio.
+
+\section{Motivación}
+
+La exploración interna de una escultura mediante los datos obtenidos con una TC \ref{fig:introduccion/ct-scan} son mucho más completos que los obtenidos con otras técnicas como las radiografías tradicionales \cite{sarrio16}. La necesidad de una herramienta con la que poder visualizar estos datos se vio satisfecha con 3DCurator \cite{bolivar16}, sin embargo, se trataba de un software todavía incompleto pues no contaba con técnicas de pre-procesamiento ni documentación como otros software del mercado especializados en visualizar datos médicos.
+
+La extracción de los distintos trozos de madera que forman parte de la escultura podrán ayudar enormemente a su estudio por separado además de poder ser extraídos en un formato como el STL para ser imprimidos en 3D.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10cm]{imagenes/introduccion/ct-scan}
+	\caption{Obtención de datos volumétricos de una escultura posteriormente examinada}
+	\label{fig:introduccion/ct-scan}
+\end{figure}
