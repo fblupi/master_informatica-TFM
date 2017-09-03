@@ -11,3 +11,61 @@ Este capítulo de especificación de requisitos tiene como objetivo definir las 
 \subsection{Ámbito del sistema}
 
 En la actualidad, los datos DICOM obtenidos tras una TC se utilizan, principalmente, en el campo donde surgieron, la medicina. Con este software llamado 3DCurator, se tratará de trasladar esta técnica al campo de la restauración de bienes culturales y poder pre-procesar, visualizar, interactuar y documentar los datos DICOM obtenidos con esculturas de madera policromada.
+
+\subsection{Definiciones, acrónimos y abreviaturas}
+
+\begin{itemize}
+	\item \textbf{ERS} (Especificación de Requisitos Software).
+	\item \textbf{GUI} (Interfaz Gráfica de usuario).
+	\item \textbf{\textit{Widget}}: Elemento de la GUI.
+	\item \textbf{DICOM} (\textit{Digital Imaging and Communication in Medicine}): Formato de datos volumétricos donde se obtienen las imágenes.
+	\item \textbf{CT o TC} (Tomografía Computarizada): Técnica de extracción de datos volumétricos que utiliza radiación X para obtener cortes de objetos.
+	\item \textbf{MRI o IRM} (Imagen por Resonancia Magnética): Técnica de extracción de datos volumétricos que utiliza el fenómeno de resonancia magnética nuclear.
+	\item \textbf{PET} (Tomografía por Emisión de Positrones): Técnica de extracción de datos volumétricos capaz de medir la actividad metabólica del cuerpo humano.
+	\item \textbf{CPU} (\textit{Graphic Processor Unit}): Microprocesador.
+	\item \textbf{GPU} (\textit{Graphic Processor Unit}): Tarjeta gráfica.
+	\item \textbf{UML} (Lenguaje unificado de modelado): Lenguaje de modelado de sistemas software.
+	\item \textbf{Historia de usuario}: Representación de un requisito utilizando el lenguaje común del usuario.
+	\item \textbf{\textit{Product Backlog}}: Listado de historias de usuario del proyecto.
+	\item \textbf{C++}: Lenguaje de programación que se usará.
+	\item \textbf{XML} (\textit{Extension Markup Language}): Meta lenguaje que se usará para exportar ficheros que después podrán ser importados.
+	\item \textbf{CMake} (\textit{Cross platform Make}): Herramienta para generar código compilable en distintas plataformas.
+	\item \textbf{Qt}: Librería que se utilizará para realizar la GUI.
+	\item \textbf{VTK} (\textit{The Visualization ToolKit}): Librería gráfica que se utilizará para la visualización de volúmenes.
+	\item \textbf{ITK} (\textit{Insight Segmentation and Registration Toolkit}): Librería de procesamiento de imágenes que se utilizará.
+	\item \textbf{OpenCV}: Librería de visión por computador que se utilizará.
+	\item \textbf{Boost}: Conjunto de algoritmos para C++ de los que se usarán la gestión de ficheros XML.
+	\item \textbf{Volumen}: Conjunto de datos en los que para cada posición XYZ se tiene un valor determinado.
+	\item \textbf{\textit{Voxel}} (\textit{Volumentric Pixel}): Celda en la matriz 3D del conjunto de datos del volumen.
+	\item \textbf{Vecinadario}: Celdas alrededor de un voxel.
+	\item \textbf{Adyacencia de voxels}: Voxels vecinos que satisfacen un criterio de similitud.
+	\item \textbf{Conectividad de voxels}: Voxels entre los cuales hay un camino de voxels adyacentes.
+	\item \textbf{Malla}: Estructura de datos con la información de una superficie tridimensional.
+	\item \textbf{STL} (\textit{Standard Triangle Language}): Formato que define mallas 3D.
+	\item \textbf{Corte}: Vista de la figura a través de un plano. Por ejemplo, al cortar con una sierra un tronco por la mitad, se puede ver cómo es por dentro en esa posición por donde se ha cortado.
+	\item \textbf{TF} (Función de transferencia): Función utilizada para visualizar los datos deseados de un volumen.
+	\item \textbf{\textit{Preset}}: Función de transferencia previamente configurada.
+	\item \textbf{\textit{Direct Volume Rendering}}: Visualización directa de volúmenes en la que cada valor del volumen se mapea con un determinado color y opacidad dado por una función de transferencia.
+	\item \textbf{\textit{Ray Casting}}: Técnica de \textit{Direct Volume Rendering} utilizada para la visualización de volúmenes.
+	\item \textbf{\textit{Marching Cubes}}: Técnica para generar malla de polígonos a partir de un volumen y un valor de isosuperficie.
+	\item \textbf{HU} (\textit{Hounsfield Units}): Unidad de medida escalar del valor de densidad en un \textit{voxel} del volumen.
+	\item \textbf{ROD} (\textit{Región de documentación}): Corte en el que se documentará.
+	\item \textbf{Regla}: \textit{Widget} utilizado para realizar mediciones de distancias.
+	\item \textbf{Transportador de ángulos}: \textit{Widget} utilizado para realizar mediciones de ángulos.
+	\item \textbf{Nota}: \textit{Widget} utilizado para realizar anotaciones sobre la figura.
+	\item \textbf{Segmentación}: Método por el cual se distinguen distintas partes del volumen.
+	\item \textbf{\textit{Thresholding}}: Segmentación basada en umbrales.
+	\item \textbf{\textit{Region-growing}}: Segmentación basada en crecimiento de regiones.
+	\item \textbf{Semilla}: Coordenada donde se comienza el \textit{region-growing}.
+	\item \textbf{\textit{Watershed}}: Técnica de segmentación basada en crecimiento de regiones por inundación.
+	\item \textbf{\textit{Canny Edge Detection}}: Algoritmo para resaltar los bordes de una imagen.
+	\item \textbf{Transformada de Hough}: Técnica utilizada para detectar líneas rectas.
+	\item \textbf{Filtro gaussiano}: Filtro que utiliza la distribución gaussiana del vecindario.
+	\item \textbf{Filtro media}: Filtro que utiliza la media del vecindario.
+	\item \textbf{Filtro mediana}: Filtro que utiliza la mediana del vecindario.
+	\item \textbf{Embón}: Ensamblado de distintos trozos de madera que hacen de base para la escultura.
+	\item \textbf{Estuco}: Pasta de grano fino utilizada para realizar correcciones en la escultura.
+	\item \textbf{Policromía}: Capa de pintura de las esculturas.
+	\item \textbf{Blanco de plomo}: Pigmento de color blanco creado a partir del plomo.
+	\item \textbf{Pan de oro}: Lámina muy fina de oro.
+\end{itemize}
