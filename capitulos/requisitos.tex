@@ -153,3 +153,53 @@ Se adaptará la interfaz actual de 3DCurator para agregar las nuevas funcionalid
 	\caption{Boceto a mano alzada de la posible distribución de los elementos en la GUI de selección de filtros}
 	\label{fig:requisitos/boceto-gui-filtro}
 \end{figure}
+
+\subsection{Funciones}
+
+El sistema tendrá que realizar distintas funciones que se comentaron anteriormente pero se profundizará en esta sección. Éstas funciones se han estructurado por módulo.
+
+\subsubsection{Auxiliar}
+
+\begin{itemize}
+	\item \textbf{Exportar volumen}: El usuario seleccionará la carpeta y el nombre donde deseará guardar el volumen que está visualizando.
+	\item \textbf{Importar volumen}: En lugar de cargar directamente los datos DICOM, el usuario podrá cargar el volumen que haya exportado anteriormente el cual puede tener aplicado los filtros de pre-procesamiento o segmentación.
+\end{itemize}
+
+\subsubsection{Pre-procesamiento}
+
+\begin{itemize}
+	\item \textbf{Filtro gaussiano}: El usuario seleccionará el número de repeticiones que desea aplicar y se aplicará el filtro al volumen cargado.
+	\item \textbf{Filtro media}: El usuario seleccionará el tamaño del vecindario y se aplicará el filtro al volumen cargado.
+	\item \textbf{Filtro mediana}: El usuario seleccionará el tamaño del vecindario y se aplicará el filtro al volumen cargado.
+\end{itemize}
+
+\subsubsection{Segmentación}
+
+\begin{itemize}
+	\item \textbf{Segmentar}: Desde un corte, el usuario seleccionará la pieza de madera que desea segmentar. Una vez realizado este proceso se mostrará en pantalla el volumen segmentado y se dará la posibilidad de exportarlo.
+\end{itemize}
+
+\subsubsection{Documentación}
+
+\begin{itemize}
+	\item \textbf{Crear ROD}: El usuario podrá agregar un ROD al que podrá dar un nombre.
+	\item \textbf{Eliminar ROD}: El usuario podrá eliminar un ROD seleccionado.
+	\item \textbf{Exportar ROD}: El usuario podrá exportar el ROD seleccionado.
+	\item \textbf{Importar ROD}: El usuario podrá importar un ROD previamente exportado.
+	\item \textbf{Cambiar ROD activo}: El usuario podrá cambiar de ROD y se cargará la posición del plano con los elementos de éste. Si el usuario mueve el plano se dejará de visualizar el ROD actual.
+	\item \textbf{Crear regla}: El usuario podrá agregar una regla a la que podrá dar un nombre.
+	\item \textbf{Eliminar regla}: El usuario podrá eliminar una regla seleccionada.
+	\item \textbf{Ocultar regla}: El usuario podrá ocultar una regla seleccionada.
+	\item \textbf{Mostrar regla}: El usuario podrá ocultar una regla seleccionada oculta.
+	\item \textbf{Cambiar regla activa}: El usuario podrá cambiar la regla activa.
+	\item \textbf{Crear transportador de ángulos}: El usuario podrá agregar un transportador de ángulos al que podrá dar un nombre.
+	\item \textbf{Eliminar transportador de ángulos}: El usuario podrá eliminar un transportador de ángulos seleccionado.
+	\item \textbf{Ocultar transportador de ángulos}: El usuario podrá ocultar un transportador de ángulos seleccionado.
+	\item \textbf{Mostrar transportador de ángulos}: El usuario podrá ocultar un transportador de ángulos seleccionado oculto.
+	\item \textbf{Cambiar transportador de ángulos activa}: El usuario podrá cambiar el transportador de ángulos activo.
+	\item \textbf{Crear nota}: El usuario podrá agregar una nota a la que podrá dar un nombre y agregar un texto.
+	\item \textbf{Eliminar nota}: El usuario podrá eliminar una nota seleccionada.
+	\item \textbf{Ocultar nota}: El usuario podrá ocultar una nota seleccionada.
+	\item \textbf{Mostrar nota}: El usuario podrá ocultar una nota seleccionada oculta.
+	\item \textbf{Cambiar nota activa}: El usuario podrá cambiar la nota activa.
+\end{itemize}
