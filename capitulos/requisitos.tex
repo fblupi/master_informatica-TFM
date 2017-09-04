@@ -203,3 +203,13 @@ El sistema tendrá que realizar distintas funciones que se comentaron anteriorme
 	\item \textbf{Mostrar nota}: El usuario podrá ocultar una nota seleccionada oculta.
 	\item \textbf{Cambiar nota activa}: El usuario podrá cambiar la nota activa.
 \end{itemize}
+
+\subsection{Requisitos de rendimiento}
+
+Al ser una aplicación de escritorio donde se mostrará y se interactuará con datos, los requisitos de rendimiento no se centrarán en la concurrencia de acceso ni en el almacenamiento, como lo podrían estar en una aplicación web.
+
+Sin embargo, hay que tener en cuenta otros factores, como pueden ser el uso eficiente de memoria y no tener cargadas todos los volúmenes que se han estado visualizando, desechando el anterior cuando se carga uno nuevo.
+
+El rendimiento gráfico también es importante, por eso y para obtener imágenes de mayor calidad, se utilizarán técnicas de DVR como el \textit{ray casting}. Estas técnicas necesitan una gran cantidad de procesamiento, pero la velocidad de procesamiento de las GPU actuales no deberían resultar un problema.
+
+En cuanto a la segmentación que es la función más compleja y costosa computacionalmente, habrá que tener especial cuidado con la gestión de memoria intentando usar los almacenes de datos más adecuados en cada caso.
