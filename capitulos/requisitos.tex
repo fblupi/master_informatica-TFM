@@ -218,3 +218,12 @@ En cuanto a la segmentación que es la función más compleja y costosa computac
 
 Al utilizar librerías como VTK, ITK, OpenCV o Boost, se seguirá la estructura de las mismas a la hora de construir el software, y se tendrán restricciones en cuanto a funcionalidad que se pueda construir con éstas. No obstante son librerías muy completas y no se debería encontrar casi ninguna restricción a excepción de la parte del pre-procesamiento y segmentación donde quizás haya que generar algoritmos propios.
 
+\subsection{Atributos del software}
+
+Al usar CMake, se podrá crear un software multiplataforma que funcione en cualquier sistema operativo.
+
+El software generado deberá ser fiable, porque aunque no trabaje con datos sensibles cuya pérdida pueda ser grave, siempre resulta molesto utilizar un software con fallos que interrumpan durante su uso.
+
+También se debe tener en cuenta que el software sea mantenible pues, en el futuro, otros desarrolladores pueden colaborar y debe estar bien documentado para que esto sea una tarea fácil.
+
+Se tratará de un software de código abierto que se alojará en un repositorio de GitHub.
