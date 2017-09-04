@@ -111,3 +111,14 @@ Las principales funcionalidades de este sistema serán:
 \subsection{Características de los usuarios}
 
 Solo existe un tipo de usuario, que es la persona que desee interactuar con los datos DICOM de una escultura. Esta persona no tiene por qué tener habilidad con un equipo informático, por lo que \myTitle deberá tener una GUI intuitiva y fácil de utilizar.
+
+\subsection{Restricciones}
+
+Se llevará a cabo un desarrollo evolutivo basado en un prototipo funcional sobre un software de visualización de datos volumétricos de esculturas de madera ya existente.
+
+Se programará en C++ usando las librerías VTK para la visualización de gráficos, ITK para el filtrado de imágenes, OpenCV para la visión por computador, Boost para la gestión de ficheros XML y Qt para la GUI.
+
+Al usar estas librerías se contará con restricciones funcionales con las que éstas cuentan que se solventarán  reescribiendo el código que sea posible y necesario. 
+
+Aprovechando que se debe usar CMake para compilar las librerías mencionadas, se utilizará también para generar el proyecto, pues se puede generar código compilable en distintas plataformas.
+
