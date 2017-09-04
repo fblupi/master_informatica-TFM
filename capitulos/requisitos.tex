@@ -105,7 +105,8 @@ Las principales funcionalidades de este sistema serán:
 		\item Agregar transportador de ángulos.
 	\end{itemize}
 	\item Segmentar la escultura por los distintos trozos de madera.
-	\item Exportar el volumen segmentado.
+	\item Exportar el volumen.
+	\item Importar el volumen.
 \end{itemize}
 
 \subsection{Características de los usuarios}
@@ -128,3 +129,27 @@ El software se utilizará para poder interactuar con esculturas de madera por lo
 
 La única funcionalidad que se vería afectada sería la segmentación en las distintas piezas de madera que la forman pues usaría como dato el valor escalar en HU de la madera.
 
+\section{Requisitos específicos}
+
+\subsection{Interfaces}
+
+Se adaptará la interfaz actual de 3DCurator para agregar las nuevas funcionalidades (Figura \ref{fig:requisitos/boceto-gui-ppal}):
+
+\begin{itemize}
+	\item Se crearán botones para importar y exportar volumen, segmentar y aplicar filtro. Éste último lanzará una ventana modal (Figura \ref{fig:requisitos/boceto-gui-filtro}) donde se seleccionará el filtro y parámetros deseados.
+	\item A la derecha se colocará la parte de documentación con la que se podrán agregar y eliminar ROD, reglas, transportadores de ángulos y anotaciones.
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=12cm]{imagenes/requisitos/boceto-gui-ppal}
+	\caption{Boceto a mano alzada de la posible distribución de los elementos en la GUI principal}
+	\label{fig:requisitos/boceto-gui-ppal}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5cm]{imagenes/requisitos/boceto-gui-filtro}
+	\caption{Boceto a mano alzada de la posible distribución de los elementos en la GUI de selección de filtros}
+	\label{fig:requisitos/boceto-gui-filtro}
+\end{figure}
