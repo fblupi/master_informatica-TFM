@@ -122,3 +122,9 @@ Al usar estas librerías se contará con restricciones funcionales con las que �
 
 Aprovechando que se debe usar CMake para compilar las librerías mencionadas, se utilizará también para generar el proyecto, pues se puede generar código compilable en distintas plataformas.
 
+\subsection{Suposiciones y dependencias}
+
+El software se utilizará para poder interactuar con esculturas de madera por lo que se tendrán en cuenta los materiales con los que están hechas la mayoría de estas (madera, estuco y metal). Si se introducen los datos DICOM de cualquier otra cosa con materiales distintos a los utilizados en las esculturas no se visualizará correctamente. Sin embargo se podrá editar la función de transferencia para su correcta visualización.
+
+La única funcionalidad que se vería afectada sería la segmentación en las distintas piezas de madera que la forman pues usaría como dato el valor escalar en HU de la madera.
+
