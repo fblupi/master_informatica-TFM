@@ -213,3 +213,8 @@ Sin embargo, hay que tener en cuenta otros factores, como pueden ser el uso efic
 El rendimiento gráfico también es importante, por eso y para obtener imágenes de mayor calidad, se utilizarán técnicas de DVR como el \textit{ray casting}. Estas técnicas necesitan una gran cantidad de procesamiento, pero la velocidad de procesamiento de las GPU actuales no deberían resultar un problema.
 
 En cuanto a la segmentación que es la función más compleja y costosa computacionalmente, habrá que tener especial cuidado con la gestión de memoria intentando usar los almacenes de datos más adecuados en cada caso.
+
+\subsection{Restricciones de diseño}
+
+Al utilizar librerías como VTK, ITK, OpenCV o Boost, se seguirá la estructura de las mismas a la hora de construir el software, y se tendrán restricciones en cuanto a funcionalidad que se pueda construir con éstas. No obstante son librerías muy completas y no se debería encontrar casi ninguna restricción a excepción de la parte del pre-procesamiento y segmentación donde quizás haya que generar algoritmos propios.
+
