@@ -98,12 +98,14 @@ A continuación se incluye una descripción completa de las historias de usuario
 			\hline
 			1.1. & \multicolumn{2}{c}{Exportar volumen} \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Descripción} \\ \hline
-			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{p{12cm}}{Se debe proveer a la aplicación de la funcionalidad necesaria para exportar el volumen que se ha cargado y editado para poder utilizarlo de nuevo posteriormente sin tener que volver a editarlo. Para ello se tratará de utilizar el formato propio de VTK para almacenar volúmenes, VTI, que hace uso de XML. Se le mostrará al usuario un diálogo donde elegirá la carpeta y el nombre del archivo.} \\ \noalign{\hrule height 1pt}
 			\multicolumn{2}{l|}{Estimación} & 12 \\ \hline
 			\multicolumn{2}{l|}{Prioridad} & 1 \\ \hline
 			\multicolumn{2}{l|}{Dependencias} & - \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
-			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - El usuario no elige nombre y se guardará el archivo con un nombre por defecto ne la carpeta elegida.} \\ 
+			\multicolumn{3}{p{12cm}}{ - El usuario elige el nombre y se guardará el archivo con el nombre elegido en la carpeta elegida.} \\ 
+			\hline
 		\end{tabular}
 	\end{center}
 	\caption{Historia de usuario - Exportar volumen}
@@ -116,12 +118,13 @@ A continuación se incluye una descripción completa de las historias de usuario
 			\hline
 			1.2. & \multicolumn{2}{c}{Importar volumen} \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Descripción} \\ \hline
-			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{p{12cm}}{El \textit{software} debe poder leer ficheros en formato VTI como los previamente exportados. Para ello el usuario deberá poder elegir un archivo en un diálogo donde se filtrarán los ficheros para que se muestren solo los que tienen la extensión VTI.} \\ \noalign{\hrule height 1pt}
 			\multicolumn{2}{l|}{Estimación} & 8 \\ \hline
 			\multicolumn{2}{l|}{Prioridad} & 5 \\ \hline
 			\multicolumn{2}{l|}{Dependencias} & 1.1. \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
-			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - Si el usuario lee un archivo que no es VTI no lo podrá visualizar.} \\
+			\multicolumn{3}{p{12cm}}{ - Si el usuario elige un archivo VTI correcto se importará y podrá empezar a utilizarlo.} \\ \hline
 		\end{tabular}
 	\end{center}
 	\caption{Historia de usuario - Importar volumen}
