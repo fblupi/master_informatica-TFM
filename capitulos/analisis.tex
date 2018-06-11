@@ -85,3 +85,503 @@ A continuación se muestra el listado de historias de usuario (\textit{Product B
 Se han estimado un total de 180 PH (Puntos de historia) y se habían planificado unas 360 horas de trabajo. Por lo que cada PH corresponde aproximadamente a 2 horas.
 
 Al haber registrado 312 horas finalmente, he determinado que mi velocidad ha sido aproximadamente 1,73 horas/PH, un poco más rápido que lo planificado.
+
+\subsection{Tarjetas de las historias de usuario}
+
+A continuación se incluye una descripción completa de las historias de usuario incluyendo una descripción de ésta y sus correspondientes criterios de aceptación.
+
+\subsubsection{Auxiliar}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			1.1. & \multicolumn{2}{c}{Exportar volumen} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 12 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 1 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & - \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Exportar volumen}
+	\label{tab:analisis/hu-exportar-volumen}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			1.2. & \multicolumn{2}{c}{Importar volumen} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 8 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 5 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & 1.1. \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Importar volumen}
+	\label{tab:analisis/hu-importar-volumen}
+\end{table}
+
+\subsubsection{Pre-procesamiento}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			2.1. & \multicolumn{2}{c}{Filtro \textit{gaussiano}} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 24 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 1 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & - \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Filtro \textit{gaussiano}}
+	\label{tab:analisis/hu-filtro-gaussiano}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			2.2. & \multicolumn{2}{c}{Filtro media} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 10 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 3 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & - \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Filtro media}
+	\label{tab:analisis/hu-filtro-media}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			2.3. & \multicolumn{2}{c}{Filtro mediana} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 8 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 3 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & - \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Filtro mediana}
+	\label{tab:analisis/hu-filtro-mediana}
+\end{table}
+
+\subsubsection{Segmentación}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			3.1. & \multicolumn{2}{c}{Segmentar pieza de madera} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 64 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 1 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & 1.1. \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Segmentar pieza de madera}
+	\label{tab:analisis/hu-segmentar-pieza-de-madera}
+\end{table}
+
+\subsubsection{Documentación}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.1. & \multicolumn{2}{c}{Crear ROD} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 4 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 1 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & - \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Crear ROD}
+	\label{tab:analisis/hu-crear-rod}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.2. & \multicolumn{2}{c}{Eliminar ROD} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 4 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 3 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & 4.1. \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Eliminar ROD}
+	\label{tab:analisis/hu-eliminar-rod}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.3. & \multicolumn{2}{c}{Exportar ROD} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 2 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 2 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & 4.1. \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Exportar ROD}
+	\label{tab:analisis/hu-exportar-rod}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.4. & \multicolumn{2}{c}{Importar ROD} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 3 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 2 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & 4.3. \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Importar ROD}
+	\label{tab:analisis/hu-importar-rod}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.5. & \multicolumn{2}{c}{Cambiar ROD} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 3 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 1 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & 4.1. \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Cambiar ROD}
+\label{tab:analisis/hu-cambiar-rod}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.6. & \multicolumn{2}{c}{Crear regla} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 3 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 2 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & - \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Crear regla}
+	\label{tab:analisis/hu-crear-regla}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.7. & \multicolumn{2}{c}{Eliminar regla} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 3 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 4 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & 4.6. \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Eliminar regla}
+	\label{tab:analisis/hu-eliminar-regla}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.8. & \multicolumn{2}{c}{Editar regla} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 1 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 5 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & 4.6. \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Editar regla}
+	\label{tab:analisis/hu-editar-regla}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.9. & \multicolumn{2}{c}{Ocultar regla} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 2 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 6 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & 4.6. \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Ocultar regla}
+	\label{tab:analisis/hu-ocultar-regla}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.10. & \multicolumn{2}{c}{Mostrar regla} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 1 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 6 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & 4.9. \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Mostrar regla}
+	\label{tab:analisis/hu-mostrar-regla}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.11. & \multicolumn{2}{c}{Crear transportador de ángulos} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 3 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 3 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & - \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Crear transportador de ángulos}
+	\label{tab:analisis/hu-crear-transportador-angulos}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.12. & \multicolumn{2}{c}{Eliminar transportador de ángulos} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 3 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 4 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & 4.11. \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Eliminar transportador de ángulos}
+	\label{tab:analisis/hu-eliminar-transportador-angulos}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.13. & \multicolumn{2}{c}{Editar transportador de ángulos} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 1 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 5 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & 4.11. \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Editar transportador de ángulos}
+	\label{tab:analisis/hu-editar-transportador-angulos}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.14. & \multicolumn{2}{c}{Ocultar transportador de ángulos} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 2 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 6 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & 4.11. \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Ocultar transportador de ángulos}
+	\label{tab:analisis/hu-ocultar-transportador-angulos}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.15. & \multicolumn{2}{c}{Mostrar transportador de ángulos} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 1 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 7 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & 4.14. \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Mostrar transportador de ángulos}
+	\label{tab:analisis/hu-mostrar-transportador-angulos}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.16. & \multicolumn{2}{c}{Crear nota} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 4 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 2 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & - \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Crear nota}
+	\label{tab:analisis/hu-crear-nota}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.17. & \multicolumn{2}{c}{Eliminar nota} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 2 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 4 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & 4.16. \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Eliminar nota}
+	\label{tab:analisis/hu-eliminar-nota}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.18. & \multicolumn{2}{c}{Editar nota} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 3 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 5 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & 4.16. \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Editar nota}
+	\label{tab:analisis/hu-editar-nota}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.19. & \multicolumn{2}{c}{Ocultar nota} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 2 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 6 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & 4.16. \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Ocultar nota}
+	\label{tab:analisis/hu-ocultar-nota}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			4.20. & \multicolumn{2}{c}{Mostrar nota} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 1 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 6 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & 4.19. \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Ocultar nota}
+	\label{tab:analisis/hu-mostrar-nota}
+\end{table}
+
+\subsubsection{Mejoras en código}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular} {l|c|l}
+			\hline
+			5.1. & \multicolumn{2}{c}{Internacionalización} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Descripción} \\ \hline
+			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{2}{l|}{Estimación} & 6 \\ \hline
+			\multicolumn{2}{l|}{Prioridad} & 8 \\ \hline
+			\multicolumn{2}{l|}{Dependencias} & - \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Historia de usuario - Internacionalización}
+	\label{tab:analisis/hu-internacionalizacion}
+\end{table}
