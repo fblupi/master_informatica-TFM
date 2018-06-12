@@ -103,6 +103,7 @@ A continuación se incluye una descripción completa de las historias de usuario
 			\multicolumn{2}{l|}{Prioridad} & 1 \\ \hline
 			\multicolumn{2}{l|}{Dependencias} & - \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - El usuario realiza la acción de exportar sin ningún volumen cargado y le aparece un mensaje para que lo cargue antes.} \\
 			\multicolumn{3}{p{12cm}}{ - El usuario no elige nombre y se guardará el archivo con un nombre por defecto ne la carpeta elegida.} \\ 
 			\multicolumn{3}{p{12cm}}{ - El usuario elige el nombre y se guardará el archivo con el nombre elegido en la carpeta elegida.} \\ 
 			\hline
@@ -144,6 +145,7 @@ A continuación se incluye una descripción completa de las historias de usuario
 			\multicolumn{2}{l|}{Prioridad} & 1 \\ \hline
 			\multicolumn{2}{l|}{Dependencias} & - \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - El usuario filtra sin haber ningún volumen cargado y le aparece un mensaje de que cargue antes un modelo.} \\
 			\multicolumn{3}{p{12cm}}{ - El usuario selecciona el filtrado y los parámetros deseados y se realiza el filtrado en el volumen, el resultado será un volumen más suavizado.} \\ \hline
 		\end{tabular}
 	\end{center}
@@ -162,6 +164,7 @@ A continuación se incluye una descripción completa de las historias de usuario
 			\multicolumn{2}{l|}{Prioridad} & 3 \\ \hline
 			\multicolumn{2}{l|}{Dependencias} & - \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - El usuario filtra sin haber ningún volumen cargado y le aparece un mensaje de que cargue antes un modelo.} \\
 			\multicolumn{3}{p{12cm}}{ - El usuario selecciona el filtrado y los parámetros deseados y se realiza el filtrado en el volumen, el resultado será un volumen más suavizado.} \\ \hline
 		\end{tabular}
 	\end{center}
@@ -180,6 +183,7 @@ A continuación se incluye una descripción completa de las historias de usuario
 			\multicolumn{2}{l|}{Prioridad} & 3 \\ \hline
 			\multicolumn{2}{l|}{Dependencias} & - \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - El usuario filtra sin haber ningún volumen cargado y le aparece un mensaje de que cargue antes un modelo.} \\
 			\multicolumn{3}{p{12cm}}{ - El usuario selecciona el filtrado y los parámetros deseados y se realiza el filtrado en el volumen. Esto reducirá el ruido de tipo \textit{salt-and-pepper}.} \\ \hline
 		\end{tabular}
 	\end{center}
@@ -195,12 +199,12 @@ A continuación se incluye una descripción completa de las historias de usuario
 			\hline
 			3.1. & \multicolumn{2}{c}{Segmentar pieza de madera} \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Descripción} \\ \hline
-			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{p{12cm}}{El usuario debe poder separar las distintas piezas de madera de las que está compuesta la figura. Para ello se desarrollará un método semi-automático guiado por el usuario para partir en dos un volumen, de forma iterativa se podría realizar la descomposición total de la figura. El usuario elegirá en el visor de corte el trozo deseado a segmentar y el sistema le preguntará por cuál de las posibles líneas detectadas divide las piezas de madera, el usuario le responderá y el sistema terminará el proceso. Para realizar esto se deberán combinar filtros, técnicas de visión por computador y de segmentación de volúmenes.} \\ \noalign{\hrule height 1pt}
 			\multicolumn{2}{l|}{Estimación} & 64 \\ \hline
 			\multicolumn{2}{l|}{Prioridad} & 1 \\ \hline
 			\multicolumn{2}{l|}{Dependencias} & 1.1. \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
-			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - El usuario elige una pieza de madera y la línea que la separa y se devolverá un volumen con esta pieza.} \\ \hline
 		\end{tabular}
 	\end{center}
 	\caption{Historia de usuario - Segmentar pieza de madera}
@@ -215,12 +219,13 @@ A continuación se incluye una descripción completa de las historias de usuario
 			\hline
 			4.1. & \multicolumn{2}{c}{Crear ROD} \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Descripción} \\ \hline
-			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{p{12cm}}{Se debe poder crear un área de trabajo de documentación, es decir, imágenes donde incluir anotaciones. Para ello se ha creado el concepto ROD (Region of Documentation), que no es más que una posición del plano de corte donde se podrán incluir medidas y anotaciones. El usuario colocará el plano en la posición deseada y creará una ROD a la que podrá dar nombre, si no, cogerá un nombre por defecto.} \\ \noalign{\hrule height 1pt}
 			\multicolumn{2}{l|}{Estimación} & 4 \\ \hline
 			\multicolumn{2}{l|}{Prioridad} & 1 \\ \hline
 			\multicolumn{2}{l|}{Dependencias} & - \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
-			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - El usuario crea una ROD sin nombre y se guarda la posición del plano con un nombre por defecto.} \\
+			\multicolumn{3}{p{12cm}}{ - El usuario crea una ROD con nombre y se guarda la posición del plano con el nombre indicado.} \\ \hline
 		\end{tabular}
 	\end{center}
 	\caption{Historia de usuario - Crear ROD}
@@ -233,12 +238,13 @@ A continuación se incluye una descripción completa de las historias de usuario
 			\hline
 			4.2. & \multicolumn{2}{c}{Eliminar ROD} \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Descripción} \\ \hline
-			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{p{12cm}}{El usuario debe poder eliminar una ROD creada con anterioridad. Para ello la selecciona y pulsa en la opción de eliminar.} \\ \noalign{\hrule height 1pt}
 			\multicolumn{2}{l|}{Estimación} & 4 \\ \hline
 			\multicolumn{2}{l|}{Prioridad} & 3 \\ \hline
 			\multicolumn{2}{l|}{Dependencias} & 4.1. \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
-			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - No hay ninguna ROD seleccionada, el usuario pulsa en eliminar y le aparece un mensaje de que debe seleccionar antes una.} \\
+			\multicolumn{3}{p{12cm}}{ - El usuario selecciona una ROD, la elimina y desaparece del listado de ROD.} \\ \hline
 		\end{tabular}
 	\end{center}
 	\caption{Historia de usuario - Eliminar ROD}
@@ -251,12 +257,13 @@ A continuación se incluye una descripción completa de las historias de usuario
 			\hline
 			4.3. & \multicolumn{2}{c}{Exportar ROD} \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Descripción} \\ \hline
-			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{p{12cm}}{Se tiene que proveer al sistema de la funcionalidad necesaria para poder exportar una ROD con todos sus componentes de forma que pueda volver a importarlo. Para ello se exportará en formato XML.} \\ \noalign{\hrule height 1pt}
 			\multicolumn{2}{l|}{Estimación} & 2 \\ \hline
 			\multicolumn{2}{l|}{Prioridad} & 2 \\ \hline
 			\multicolumn{2}{l|}{Dependencias} & 4.1. \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
-			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - No hay ninguna ROD seleccionada, el usuario pulsa en exportar y le aparece un mensaje de que debe seleccionar antes una.} \\
+			\multicolumn{3}{p{12cm}}{ - El usuario exporta una ROD seleccionada, elige el nombre, que por defecto es su nombre y se guarda correctamente en formato XML.} \\ \hline
 		\end{tabular}
 	\end{center}
 	\caption{Historia de usuario - Exportar ROD}
@@ -269,12 +276,12 @@ A continuación se incluye una descripción completa de las historias de usuario
 			\hline
 			4.4. & \multicolumn{2}{c}{Importar ROD} \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Descripción} \\ \hline
-			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{p{12cm}}{Se debe poder leer un archivo XML con un formato específico con información de una ROD y sus componentes. Para ello se le mostrará al usuario un cuadro de diálogo donde explorará entre sus archivos, realizando un filtrado para mostrar solo los ficheros XML} \\ \noalign{\hrule height 1pt}
 			\multicolumn{2}{l|}{Estimación} & 3 \\ \hline
 			\multicolumn{2}{l|}{Prioridad} & 2 \\ \hline
 			\multicolumn{2}{l|}{Dependencias} & 4.3. \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
-			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - El usuario carga un archivo con el formato válido y se importa la ROD con todos sus componentes.} \\ \hline
 		\end{tabular}
 	\end{center}
 	\caption{Historia de usuario - Importar ROD}
@@ -287,12 +294,13 @@ A continuación se incluye una descripción completa de las historias de usuario
 			\hline
 			4.5. & \multicolumn{2}{c}{Cambiar ROD} \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Descripción} \\ \hline
-			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{p{12cm}}{El usuario debe poder cambiar la ROD activa seleccionándola dentro de la lista de ROD. Esto cambiará automáticamente la posición del plano para usar la de esta ROD.} \\ \noalign{\hrule height 1pt}
 			\multicolumn{2}{l|}{Estimación} & 3 \\ \hline
 			\multicolumn{2}{l|}{Prioridad} & 1 \\ \hline
 			\multicolumn{2}{l|}{Dependencias} & 4.1. \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
-			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - El usuario selecciona la misma ROD que está activa y no cambia.} \\
+			\multicolumn{3}{p{12cm}}{ - El usuario selecciona una ROD que no está activa y cambia la posición del plano y se muestran los elementos de esa ROD.} \\ \hline
 		\end{tabular}
 	\end{center}
 	\caption{Historia de usuario - Cambiar ROD}
