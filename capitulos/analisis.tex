@@ -318,6 +318,7 @@ A continuación se incluye una descripción completa de las historias de usuario
 			\multicolumn{2}{l|}{Prioridad} & 2 \\ \hline
 			\multicolumn{2}{l|}{Dependencias} & - \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - El usuario crea una regla sin seleccionar ninguna ROD y se le informa de que seleccione una.} \\
 			\multicolumn{3}{p{12cm}}{ - El usuario selecciona dos puntos y le aparecerá la medida entre ambos puntos.} \\ \hline
 		\end{tabular}
 	\end{center}
@@ -411,6 +412,7 @@ A continuación se incluye una descripción completa de las historias de usuario
 			\multicolumn{2}{l|}{Prioridad} & 3 \\ \hline
 			\multicolumn{2}{l|}{Dependencias} & - \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - El usuario crea un transportador de ángulos sin seleccionar ninguna ROD y se le informa de que seleccione una.} \\
 			\multicolumn{3}{p{12cm}}{ - El usuario selecciona tres puntos y le aparecerá la medida del ángulo entre esos puntos.} \\ \hline
 		\end{tabular}
 	\end{center}
@@ -499,12 +501,14 @@ A continuación se incluye una descripción completa de las historias de usuario
 			\hline
 			4.16. & \multicolumn{2}{c}{Crear nota} \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Descripción} \\ \hline
-			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{p{12cm}}{El sistema debe proveer de una funcionalidad para poder realizar anotaciones en un corte. Para ello el usuario tendrá que introducir un texto y colocar la flecha apuntando al sitio de donde viene la anotación. Se hará uso de un \textit{widget} de VTK para ello.} \\ \noalign{\hrule height 1pt}
 			\multicolumn{2}{l|}{Estimación} & 4 \\ \hline
 			\multicolumn{2}{l|}{Prioridad} & 2 \\ \hline
 			\multicolumn{2}{l|}{Dependencias} & - \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
-			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - El usuario crea una nota sin seleccionar ninguna ROD y se le informa de que seleccione una.} \\
+			\multicolumn{3}{p{12cm}}{ - El usuario crea una nota sin texto y se le informa de que lo introduzca.} \\
+			\multicolumn{3}{p{12cm}}{ - El usuario introduce un texto, crea la nota y se muestra en la vista.} \\ \hline
 		\end{tabular}
 	\end{center}
 	\caption{Historia de usuario - Crear nota}
@@ -517,12 +521,13 @@ A continuación se incluye una descripción completa de las historias de usuario
 			\hline
 			4.17. & \multicolumn{2}{c}{Eliminar nota} \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Descripción} \\ \hline
-			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{p{12cm}}{Se deben poder eliminar notas de la pantalla. Para ello el usuario solo tiene que seleccionarla y pulsar en eliminar.} \\ \noalign{\hrule height 1pt}
 			\multicolumn{2}{l|}{Estimación} & 2 \\ \hline
 			\multicolumn{2}{l|}{Prioridad} & 4 \\ \hline
 			\multicolumn{2}{l|}{Dependencias} & 4.16. \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
-			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - El usuario realiza la acción de eliminar una nota sin que haya ninguna y se le mostrará un mensaje indicando que antes seleccione una.} \\
+			\multicolumn{3}{p{12cm}}{ - El usuario selecciona una nota, la elimina y desaparece de la lista y de la vista.} \\ \hline
 		\end{tabular}
 	\end{center}
 	\caption{Historia de usuario - Eliminar nota}
@@ -535,12 +540,12 @@ A continuación se incluye una descripción completa de las historias de usuario
 			\hline
 			4.18. & \multicolumn{2}{c}{Editar nota} \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Descripción} \\ \hline
-			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{p{12cm}}{El usuario debe ser capaz de editar la posición de una nota. Para ello selecciona y arrastra la flecha a donde apunta.} \\ \noalign{\hrule height 1pt}
 			\multicolumn{2}{l|}{Estimación} & 3 \\ \hline
 			\multicolumn{2}{l|}{Prioridad} & 5 \\ \hline
 			\multicolumn{2}{l|}{Dependencias} & 4.16. \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
-			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - El usuario selecciona y arrastra el punto donde apunta una nota y se actualiza la posición de ésta.} \\ \hline
 		\end{tabular}
 	\end{center}
 	\caption{Historia de usuario - Editar nota}
@@ -553,12 +558,13 @@ A continuación se incluye una descripción completa de las historias de usuario
 			\hline
 			4.19. & \multicolumn{2}{c}{Ocultar nota} \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Descripción} \\ \hline
-			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{p{12cm}}{El usuario debe ser capaz de ocultar una nota de la vista sin eliminarla. Para ello la selecciona en la lista y pulsa en ocultar. Se mostrará de forma distinta en la lista de notas para que se tenga claro que se ha ocultado.} \\ \noalign{\hrule height 1pt}
 			\multicolumn{2}{l|}{Estimación} & 2 \\ \hline
 			\multicolumn{2}{l|}{Prioridad} & 6 \\ \hline
 			\multicolumn{2}{l|}{Dependencias} & 4.16. \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
-			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - El usuario realiza la acción de ocultar una nota sin que haya ninguna y se le mostrará un mensaje indicando que antes seleccione una.} \\
+			\multicolumn{3}{p{12cm}}{ - El usuario selecciona una nota, la oculta y desaparece de la vista, pero no de la lista.} \\ \hline
 		\end{tabular}
 	\end{center}
 	\caption{Historia de usuario - Ocultar nota}
@@ -571,12 +577,13 @@ A continuación se incluye una descripción completa de las historias de usuario
 			\hline
 			4.20. & \multicolumn{2}{c}{Mostrar nota} \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Descripción} \\ \hline
-			\multicolumn{3}{p{12cm}}{.} \\ \noalign{\hrule height 1pt}
+			\multicolumn{3}{p{12cm}}{El usuario debe ser capaz de mostrar una nota que previamente ha ocultado. Para ello la selecciona en la lista y pulsa en mostrar. Se volverá a mostrar como antes en la lista de notas.} \\ \noalign{\hrule height 1pt}
 			\multicolumn{2}{l|}{Estimación} & 1 \\ \hline
 			\multicolumn{2}{l|}{Prioridad} & 6 \\ \hline
 			\multicolumn{2}{l|}{Dependencias} & 4.19. \\ \noalign{\hrule height 1pt}
 			\multicolumn{3}{l}{Pruebas de aceptación} \\ \hline
-			\multicolumn{3}{p{12cm}}{ - .} \\ \hline
+			\multicolumn{3}{p{12cm}}{ - El usuario realiza la acción de ocultar una nota sin que haya ninguna y se le mostrará un mensaje indicando que antes seleccione una.} \\
+			\multicolumn{3}{p{12cm}}{ - El usuario selecciona una nota, la oculta y desaparece de la vista, pero no de la lista.} \\ \hline
 		\end{tabular}
 	\end{center}
 	\caption{Historia de usuario - Mostrar nota}
