@@ -174,12 +174,77 @@ Este filtro, al igual que el que hace uso de la media es, es un filtro paso baja
 
 \subsection{Segmentación}
 
-Lala
+La segmentación es la separación de partes de un volumen para su estudio por separado. Antes de profundizar en algunas de las técnicas utilizadas en la actualidad, hay que tener claro una serie de conceptos \cite{segmentation-concepts}.
+
+\begin{itemize}
+	\item \textbf{Adyacencia}: Dos píxel son adyacentes si son vecinos y satisfacen un criterio de similitud, por ejemplo, que su valor de intensidad esté entre -700 y -300.
+	\item \textbf{Camino}: Un camino entre dos píxeles es una secuencia de píxeles adyacentes que va desde un píxel hasta otro.
+	\item \textbf{Conectividad}: Existe conectividad entre dos píxeles si se puede trazar al menos un camino entre ambos.
+	\item \textbf{Componente conectado en un subconjunto de una imagen}: En un subconjunto $S$ de una imagen, para todos los píxeles $p$ en $S$, el conjunto de píxeles en $S$ conectados a $p$ se denominan componentes conectados en $S$.
+	\item \textbf{Conjunto conectado}: Si el subconjunto de una imagen $S$ solo tiene un componente conectado, entonces se convierte en un conjunto conectado.
+	\item \textbf{Región}: Un subconjunto $S$ de una imagen es una región si es un conjunto conectado.
+	\item \textbf{Borde}: El borde de una región $S$ es el conjunto de píxeles que tienen uno o más vecinos no pertenecientes a $S$.
+\end{itemize}
+
+La segmentación trata de buscar los vóxeles que pertenecen a una estructura. Existen distintas aproximaciones como se detallaron en la introducción. A continuación se detallarán algunos de los métodos que se citaron.
+
+\subsubsection{Segmentación basada en umbrales}
+
+Esta segmentación es muy básica y trata de diferenciar las regiones utilizando dos umbrales de valor de intensidad y realizando un filtro en el que se descartasen todos aquellos vóxeles que no se encuentran entre estos valores \cite{otsu79}.
+
+El uso de los histogramas de valores de la imagen pueden resultar útiles a la hora de seleccionar los umbrales.
+
+Este método puede resultar útil para separar materiales con diferencias notables entre valores de densidad. En nuestro caso podría servir para separar madera de estuco, por ejemplo.
+
+\subsubsection{Segmentación basada en crecimiento usando umbrales}
+
+La segmentación basada en crecimiento usando umbrales es una extensión del método anterior, con la diferencia de que la segmentación basada en umbrales obtiene todas las regiones que se encuentran en la imagen y en la basada en crecimiento solo obtiene una región, obteniendo todos los puntos conectados a uno inicial que tienen el umbral como criterio de similitud \cite{haralick85} (Figura \ref{fig:desarrollo/segmentacion-crecimiento-umbral}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=11cm]{imagenes/desarrollo/segmentacion-crecimiento-umbral}
+	\caption{Segmentación de los plexos coirodeos de una imagen de un cerebro usando una segmentación basada en crecimiento usando un umbral entre 210 y 255}
+	\label{fig:desarrollo/segmentacion-crecimiento-umbral}
+\end{figure}
+
+Una variante de este método sería usar umbrales dinámicos. Es decir, en lugar de utilizar un valor máximo y mínimo global para toda la imagen (por ejemplo, valores de densidad entre -700 y -300), usar un rango dependiendo del punto donde se encuentro (por ejemplo, si el rango es de 100 y estamos en un punto con valor -532, el umbral para sus vecinos estaría entre -632 y -432). Este es el método de segmentación que se implementó en el TFG para segmentar las piezas separadas de la escultura como los elementos de la camilla.
+
+En este caso es muy importante elegir el punto inicial, pues si se escoge un punto que se encuentre cercano al borde, puede hacer que la segmentación se extienda a zonas no deseadas.
+
+\subsubsection{\textit{Watershed}}
+
+La transformación divisoria, más conocida como \textit{watershed} se basa en ver las imágenes como un relieve topográfico con crestas y cuencas. Las elevaciones del terreno estarían definidas por los valores de densidad de la imagen o por el gradiente \cite{beucher79} (Figura \ref{fig:desarrollo/watershed}). 
+
+El resultado es la descomposición de la imagen en distintas cuencas hidrográficas para cada mínimo local. Pero el elevado número de mínimos locales da lugar a sobresegmentación por lo que hay que definir un método de mezclado. El método más utilizado es el de la inundación. Se marca una posición de inundación que podría mezclar varias cuencas.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=9cm]{imagenes/desarrollo/watershed}
+	\caption{El terreno se indica con una línea continua negra, las distintas regiones están marcadas con líneas discontinuas negras, las flechas los mínimos locales, las líneas discontinuas azules los niveles de agua y las líneas discontinuas azules los distintos niveles de agua para realizar la inundación. Imagen extraída de \url{https://en.wikipedia.org/wiki/File:Watershed_transform_-_flood_interpretation.svg}}
+	\label{fig:desarrollo/watershed}
+\end{figure}
+
+\subsubsection{\textit{Livewire}}
+
+El método de segmentación \textit{livewire} (también conocido como tijeras inteligentes) es, a diferencia de los anteriores, un método basado en bordes.
+
+\textit{Livewire} es un método manual de segmentación donde hace falta la intervención del usuario en prácticamente todo momento pues tiene que ir seleccionando puntos del borde de la región a segmentar en cada corte.
+
+Se hace uso del algoritmo de \textit{Dijkstra} para calcular el camino de coste mínimo entre el punto seleccionado por el usuario y uno anterior. Hace uso de la componente gradiente para dar coste a los nodos del grafo \cite{mortensen95}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=9cm]{imagenes/desarrollo/livewire}
+	\caption{Ejemplo de hígado en un corte segmentado usando \textit{livewire} \cite{toennies12}}
+	\label{fig:desarrollo/livewire}
+\end{figure}
+
+Este método es quizás el más preciso, pero para obtener un resultado hace falta un usuario delante del ordenador recortando todos y cada uno de los cortes del conjunto de datos volumétrico.
 
 \section{Fases de desarrollo}
 
-Lala
+TODO
 
 \section{Problemas y soluciones}
 
-Lala
+TODO
