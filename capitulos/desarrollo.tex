@@ -71,7 +71,7 @@ Estos dos tiempos, T1 (\textit{phase}) y T2 (\textit{dephase}) son medidos. Para
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=12cm]{imagenes/desarrollo/relajacion-longitudinal-transversal}
-	\caption{A la izquierda gráfica de la relajación longitudinal (crecimiento logarítmico) y a la derecha gráfica de la relajación transversal (crecimiento exponencial). Imagen extraída de: \url{http://www.nmr.uni-duesseldorf.de/main/mtheorie_3_e.html}}
+	\caption{A la izquierda gráfica de la relajación longitudinal (crecimiento logarítmico) y a la derecha gráfica de la relajación transversal (crecimiento exponencial) \cite{relaxation}}
 	\label{fig:desarrollo/relajacion-longitudinal-transversal}
 \end{figure}
 
@@ -91,7 +91,86 @@ Al necesitar unos \textit{presets} con los que se pueda visualizar la escultura 
 
 \subsection{Filtrado}
 
-Lala
+Los datos en crudo obtenidos con las técnicas anteriormente descritas muchas veces no son lo suficientemente buenas y tienen lo que se denomina ruido. Hay muchos tipos de ruido y existen distintos filtros que aplicar a las imágenes para reducirlo.
+
+Antes de describir los filtros más usados, se va a profundizar en ciertos aspectos teóricos necesarios para entender mejor cómo funcionan. Estos conceptos se van a describir para un espacio 2D, aunque pasar a un espacio 3D como el de los volúmenes es trivial pues tan solo haría falta utilizar una variable más para la profundidad.
+
+Lo primero que hay que comprender es el concepto de vecindario. Que no es más que los píxeles que lo rodean a una distancia concreta. Por ejemplo un vecindario de tamaño 3x3 sobre el punto $p$ es un conjunto de píxeles con tamaño 3x3 con centro en el píxel $p$ (Figura \ref{fig:desarrollo/vecindario}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10cm]{imagenes/desarrollo/vecindario}
+	\caption{Vecindarios 3x3, 5x5 y 7x7 de un píxel (rojo).}
+	\label{fig:desarrollo/vecindario}
+\end{figure}
+
+Un dominio espacial se denota con la expresión:
+
+\[ g(x, y) = T[f(x, y)] \]
+
+Donde:
+
+\begin{itemize}
+	\item $f(x, y)$ es la imagen de entrada
+	\item $g(x, y)$ es la imagen de salida
+	\item $T$ es un operador en $f$ definido sobre el vecindario $(x,y)$
+\end{itemize}
+
+Los filtros espaciales consisten en aplicar el operador $T$ a los píxeles del vecindario. Por ejemplo en un vecindario 3x3 y un operador $T$ definido como la intensidad media del vecindario, el valor $g(x_{i}, y_{j})$ será la suma del valor $f(x_{i}, y_{j})$ de su vecindario dividido entre 9.
+
+\subsubsection{Filtro media}
+
+El filtro media es el definido anteriormente. Es decir, usa un \textit{kernel} en el que todos los vecinos tienen el mismo peso.
+
+Es un filtro utilizado para suavizar imágenes con mucho ruido.
+
+\subsubsection{Filtro mediana}
+
+El filtro media hace uso de la mediana para calcular el valor de salida del píxel. Por ejemplo, para la matriz: 
+
+\[
+\begin{bmatrix}
+	1 & 4 & 0 \\
+	2 & 2 & 4 \\
+	1 & 0 & 1 
+\end{bmatrix} 
+\]
+
+El valor para el punto $p$ correspondiente a $M(1, 1)$ con valor original 2, sería 1. Porque es la mediana de su vecindario (0, 0, 1, 1, \textbf{1}, 2, 2, 4, 4).
+
+Este filtro es muy usado por ser el más efectivo para reducir el ruido de tipo \textit{salt-and-pepper} 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=11cm]{imagenes/desarrollo/salt-and-pepper}
+	\caption{Ejemplo de ruido tipo \textit{salt-and-pepper}, utilizando un filtro mediana.  Imagen extraída de: \url{https://en.wikipedia.org/wiki/File:Medianfilterp.png}}
+	\label{fig:desarrollo/salt-and-pepper}
+\end{figure}
+
+\subsubsection{Filtro \textit{gaussiano}}
+
+El filtro \textit{gaussiano} o binomial (Figura \ref{fig:desarrollo/filtro-gaussiano}) hace uso de una versión discretizada de la función \textit{gaussiana} y, por tanto, se basa en la convolución de una matriz que para un vecindario 5x5 sería:
+
+\[
+\begin{bmatrix}
+	1 & 4 & 6 & 4 & 1 \\
+	4 & 16 & 24 & 16 & 4 \\
+	6 & 24 & 36 & 24 & 6 \\
+	4 & 16 & 24 & 16 & 4 \\
+	1 & 4 & 6 & 4 & 1
+\end{bmatrix} 
+\]
+
+Para normalizar los elementos del \textit{kernel} haría falta que sumasen 1, por lo que se divide entre la suma de todos sus elementos (256 en el caso de 5x5).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=11cm]{imagenes/desarrollo/filtro-gaussiano}
+	\caption{Ejemplo de suavizado usado un fitro \textit{gaussiano}}
+	\label{fig:desarrollo/filtro-gaussiano}
+\end{figure}
+
+Este filtro, al igual que el que hace uso de la media es, es un filtro paso baja utilizado para suavizar imágenes.
 
 \subsection{Segmentación}
 
