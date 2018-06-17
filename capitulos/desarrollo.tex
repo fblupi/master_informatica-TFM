@@ -342,7 +342,57 @@ Otro estudio más reciente \cite{boas12} usando escáneres más modernos asegura
 
 \subsection{Subdivisión de piezas de madera}
 
-TODO
+El objetivo de esta sección es poder dividir el modelo de una escultura en las distintas piezas de madera que la conforman.
+
+Anteriormente hemos analizado las soluciones que se utilizan actualmente y hemos visto como no son efectivas para resolver nuestro problema. Por tanto, es el momento de proponer e implementar una solución efectiva capaz de separar las distintas piezas de las que está compuesta la escultura.
+
+Para abordar esta situación se va a seguir una de las máximas más importantes a la hora de solucionar problemas, que no es más que dividir el problema en sub-problemas más pequeños. Por lo que, en primer lugar se intentará segmentar una sola imagen y posteriormente aplicar esta solución en todos los cortes del conjunto de datos.
+
+\subsubsection{Segmentación 2D}
+
+Lo primero que tenemos que hacer es preguntarnos a nosotros mismos cómo detectar el cambio entre dos piezas de madera en una escultura. Lo primero que se nos puede ocurrir es que se puede ver un cambio de continuidad en la curvatura de los anillos, pero analizar todos los anillos y realizar un estudio de su continuidad en cada corte puede ser muy costoso y además hay ocasiones en las que el cambio de continuidad no es tan obvio (Figura \ref{fig:desarrollo/continuidad-anillos}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10cm]{imagenes/desarrollo/continuidad-anillos}
+	\caption{A la izquierda podemos ver continuidad en algunos anillos}
+	\label{fig:desarrollo/continuidad-anillos}
+\end{figure}
+
+Tenemos que buscar una solución computacionalmente menos costosa porque tendríamos que lanzar este algoritmo en todos los cortes del conjunto de datos volumétrico y, normalmente, trabajamos con datos de cientos de cortes.
+
+Cuando los escultores ensamblan las piezas de madera que forman la base de la escultura usan piezas cortadas previamente que encajan y se acoplan más fácilmente. Por tanto el límite entre dos piezas de madera distintas es una línea recta. la detección de este tipo de líneas por un ordenador se puede realizar rápidamente usando técnicas de visión por computador existentes como la transformada de \textit{Hough} \cite{duda72}.
+
+Pero aplicar este algoritmo directamente a una imagen de un corte no nos daría muy buenos resultados si previamente no aplicamos un algoritmo de detección de bordes. Para hacer esto, vamos a usar uno de los más utilizados, el algoritmo de detección de bordes de \textit{Canny} \cite{canny86}. Con este algoritmo y ajustando algunos parámetros podemos obtener con mayor o menor tolerancia los bordes de una imagen (Figura \ref{fig:desarrollo/canny}) que permitiría utilizar de forma más efectiva la transformada de \textit{Hough} para detectar las líneas rectas de la imagen.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10cm]{imagenes/desarrollo/canny}
+	\caption{Corte al que hemos aplicado el algoritmo de detección de bordes de \textit{Canny}. Podemos apreciar fácilmente la línea recta que separa las dos piezas de madera}
+	\label{fig:desarrollo/canny}
+\end{figure}
+
+Para evitar la generación de algunas líneas producidas por materiales que no son madera, vamos a aplicar previamente un filtro por umbral para quedarnos solo con los datos de la madera. A continuación aplicamos el algoritmo previamente citado de \textit{Hough} para buscar las líneas. 
+
+Las líneas obtenidas las ordenamos de mayor a menor tamaño para descartar líneas rectas que podrían haber anillos o en los bordes de la escultura (Figura \ref{fig:desarrollo/canny-hough}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10cm]{imagenes/desarrollo/canny-hough}
+	\caption{Corte al que hemos aplicado el algoritmo de detección de bordes de \textit{Canny} para aplicar a continuación el algoritmo de \textit{Hough} para detectar líneas rectas. Se muestran las cinco líneas más largas que se han encontrado}
+	\label{fig:desarrollo/canny-hough}
+\end{figure}
+
+Una vez tenemos la línea que separa las dos piezas, la segmentación es sencilla porque solo tenemos que aplicar un algoritmo de crecimiento limitado no solo por el umbral, sino por la línea que hemos seleccionado.
+
+Por tanto, para realizar la segmentación en una sola imagen nos hace falta una semilla (la usada en el algoritmo de crecimiento por umbral tradicional) y una línea que limite el crecimiento (Figura \ref{fig:desarrollo/pipeline-segmentacion-2d}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=11cm]{imagenes/desarrollo/pipeline-segmentacion-2d}
+	\caption{Proceso completo de la segmentación 2D donde se detalla cuándo interviene el ordenador y cuándo lo hace el usuario}
+	\label{fig:desarrollo/pipeline-segmentacion-2d}
+\end{figure}
 
 \subsection{Herramientas de documentación}
 
