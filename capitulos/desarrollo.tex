@@ -251,9 +251,94 @@ TODO
 
 \section{Fases de desarrollo}
 
+Inicialmente se planteó un desarrollo en tres partes bien diferenciadas e independientes, aunque una de ellas podría ayudar a lograr mejores resultados en la siguiente. 
+
+Hablo de la de pre-procesamiento de datos (correspondiente a la etapa de filtrado del flujo de representación de datos volumétricos) en la que se marcó el objetivo de reducir el ruido, específicamente el que producían los objetos metálicos. 
+
+Gracias a esto sería más fácil detectar las distintas piezas de madera para la sección de subdivisión de piezas de madera (correspondiente a la etapa de segmentación). 
+
+Por último, ya con estas dos secciones terminadas, se pasaría a añadir herramientas de documentación que ayudarían al restaurador a realizar sus tareas de documentación en la propia aplicación sin necesidad de utilizar herramientas externas.
+
 \subsection{Pre-procesamiento de datos}
 
-TODO
+El objetivo aquí era la reducción del ruido que se podría encontrar en las imágenes. Como ya se ha explicado anteriormente, hay filtros básicos que nos permiten reducirlo. El filtro media y \textit{gaussiano} nos ayuda a suavizar y el filtro mediana a acabar con \textit{outliers} y ruido de tipo \textit{salt-and-pepper} en general. Aunque en los datos de prueba en los que trabajamos no hay ruido de tipo \textit{salt-and-pepper} es importante proveer este filtro pues en otras imágenes podría haber y es el más efectivo a la hora de acabar con él.
+
+Para no tener que crear las matrices de convolución manualmente \textit{reinventando la rueda}, se hizo uso de una librería que nació precisamente para realizar todas las tareas previas al renderizado de volúmenes y que cuenta con una gama de filtros ya implementados. Hablo de ITK \cite{itk}. Una librería de código abierto de la misma compañía que VTK, \textit{Kitware}.
+
+Esta librería incluye los tres filtros citados con anterioridad:
+
+\begin{itemize}
+	\item \textbf{Media}: Usando la clase \texttt{itkMeanImageFilter} pasando como parámetro el tamaño del vecindario.
+	\item \textbf{Mediana}: Usando la clase \texttt{itkMedianImageFilter} pasando como parámetro el tamaño del vecindario.
+	\item \textbf{\textit{Gaussiano}}: Usando la clase \texttt{itkBinomialBlurImageFilter} pasando como parámetro el número de repeticiones a realizar.
+\end{itemize}
+
+Para poder hacer el filtrado hace falta transformar la imagen actual que se encuentra en el formato utilizado en VTK para ser renderizada al formato de ITK. Y una vez realizado el filtro hacer el paso opuesto. Para ello hay que utilizar las clases \texttt{itkVTKImageToImageFilter} e \texttt{itkImageToVTKImageFilter}.
+
+A continuación se presenta un pequeño \textit{script} con los pasos a seguir para realizar el filtrado en una imagen en VTK usando filtros de ITK (Código \ref{code:desarrollo/vtk-itk-filtro}):
+
+\begin{lstlisting}[style=C, label=code:desarrollo/vtk-itk-filtro, caption={\textit{script} para usar el filtro media de ITK en una imagen en VTK}]
+// Definir tipo de imagen ITK usando signed short y 3 dimensiones
+typedef signed short PixelType;
+const unsigned int Dimension = 3;
+typedef itk::Image<PixelType,Dimension> ImageType;
+
+// Crear pipeline para pasar una imagen VTK a ITK
+typedef itk::VTKImageToImageFilter<ImageType> VTKImageToImageType;
+VTKImageToImageType::Pointer vtkImageToImage = VTKImageToImageType::New();
+vtkImageToImage->SetInput(imageData);
+vtkImageToImage->Update();
+
+// Filtrar la imagen ITK usando un filtro media
+typedef itk::MeanImageFilter<ImageType,ImageType> MeanImageFilterType;
+MeanImageFilterType::Pointer meanFilter = MeanImageFilterType::New();
+meanFilter->SetInput(vtkImageToImage->GetOutput());
+meanFilter->SetRadius(radius);
+meanFilter->Update();
+
+// Pasara de imagen ITK filtrada a VTK
+typedef itk::ImageToVTKImageFilter<ImageType> ImageToVTKImageType;
+ImageToVTKImageType::Pointer imageToVTKImage = ImageToVTKImageType::New();
+imageToVTKImage->SetInput(meanFilter->GetOutput());
+imageToVTKImage->Update();
+
+// Actualizar la instancia de la imagen VTK
+imageData->DeepCopy(imageToVTKImage->GetOutput());
+imageData->Modified();
+\end{lstlisting}
+
+La integración con la interfaz es simple e intuitiva. Tan solo hay que pulsar en el botón de filtrado (Figura \ref{fig:desarrollo/gui-filtro}) y aparecerá un cuadro de diálogo donde se podrá elegir el tipo de filtro a aplicar y sus parámetros (Figura \ref{fig:desarrollo/gui-filtro-dialogo}). Una vez seleccionado se pulsa en OK y empezará a filtrar. Es un proceso largo por lo que se coloca un cuadro de diálogo informando al usuario que tenga paciencia.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=11cm]{imagenes/desarrollo/gui-filtro}
+	\caption{Botón que hay que pulsar para que aparezca el diálogo de filtrado}
+	\label{fig:desarrollo/gui-filtro}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4cm]{imagenes/desarrollo/gui-filtro-gaussiano}
+	\includegraphics[width=4cm]{imagenes/desarrollo/gui-filtro-media}
+	\includegraphics[width=4cm]{imagenes/desarrollo/gui-filtro-mediana}
+	\caption{Cuadro de diálogo con los filtros posibles. Se muestran tres imágenes, una por cada pestaña abierta para mostrar el parámetro que hay que establecer para aplicar el filtro}
+	\label{fig:desarrollo/gui-filtro-dialogo}
+\end{figure}
+
+Sin embargo ningún \textit{pipeline} de los filtros citados anteriormente ha ayudado a eliminar el ruido producido por los elementos metálicos (Figura \ref{fig:desarrollo/ruido-clavo}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=8cm]{imagenes/desarrollo/ruido-clavo}
+	\caption{Ruido producido por los elementos metálicos}
+	\label{fig:desarrollo/ruido-clavo}
+\end{figure}
+
+Y es que ningún filtro estudiado sería capaz de reducir este ruido. Pues el tamaño de vecindario que se debería aplicar sería demasiado grande y suavizaría tanto la imagen que se perderían tantos detalles que no parecería ni la imagen original.
+
+Hay estudios que aseguran haber reducido este ruido en imágenes médicas con pequeños implantes metálicos \cite{deman98} \cite{watzke04}, pero no detallan el comportamiento de su algoritmo para reproducirlo y además, en las imágenes de prueba que utilizan el ruido es ínfimo comparado con el caso de nuestros datos.
+
+Otro estudio más reciente \cite{boas12} usando escáneres más modernos aseguran que retocando los parámetros de este podría eliminarse prácticamente por completo. Por lo que, resolver este problema pasa a ser responsabilidad de la primera fase del flujo del modelado de conjuntos volumétrico, la obtención de datos.
 
 \subsection{Subdivisión de piezas de madera}
 
