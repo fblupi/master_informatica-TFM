@@ -243,11 +243,156 @@ Este método es quizás el más preciso, pero para obtener un resultado hace fal
 
 \section{Plataforma de desarrollo}
 
-TODO
+El \textit{software} se ha desarrollado usando CMake \cite{cmake} por lo que se pueden crear \textit{makefiles} para distintas plataformas.
 
-\subsection{Instalación y configuración}
+En mi caso, lo he desarrollado con Windows 10 Pro y el compilador de Visual Studio de 2017.
 
-TODO
+Se ha compilado con las versiones más recientes de los entornos de desarrollo y librerías:
+
+\begin{itemize}
+	\item Visual Studio Community 2017 15.7.3 (Junio de 2018)
+	\item CMake 3.11.3 (Mayo de 2018)
+	\item Qt5.11.0 (Mayo de 2018)
+	\item VTK 8.1.1 (Mayo de 2018)
+	\item ITK 4.13.0 (Diciembre de 2017)
+	\item Boost 1.67.0 (Abril de 2018)
+	\item OpenCV 3.4.1 (Febrero de 2018)
+\end{itemize}
+
+Ha sido un compromiso y esfuerzo propio utilizar las últimas versiones de estas librerías porque entre una versión y otra hay problemas de incompatibilidad y funciones que quedan \textit{deprecated}, pero al mismo tiempo, tener un \textit{software} que usa las últimas versiones estables de sus librerías ayuda a no estancarse en una versión antigua y que una futura migración no se convierta en un esfuerzo titánico.
+
+\section{Instalación y configuración}
+
+\subsection{Entorno de desarrollo}
+
+\subsubsection{Visual Studio Community 2017}
+
+\begin{itemize}
+	\item Descargar \href{https://www.visualstudio.com/es-es/downloads/download-visual-studio-vs.aspx}{Visual Studio Community 2017} e instalar
+\end{itemize}
+
+\subsubsection{Qt5.11.0}
+
+\begin{itemize}
+	\item Descargar e instalar \href{http://download.qt.io/official_releases/qt/5.11/5.11.0/qt-opensource-windows-x86-5.11.0.exe}{Qt5.11.00} e instalar para el compilador \textit{msvc2017 64-bit}
+	\item Crear una nueva variable de entorno \texttt{QTDIR} con el valor \\ \texttt{C:\textbackslash Qt\textbackslash Qt5.11.0}
+	\item Añadir al \textit{path}: \texttt{C:\textbackslash Qt\textbackslash Qt5.11.0\textbackslash 5.11.0\textbackslash msvc2017\_64\textbackslash bin}
+\end{itemize}
+
+\subsubsection{CMake 3.11.3}
+
+\begin{itemize}
+	\item Descargar \href{https://cmake.org/files/v3.11/cmake-3.11.3-win64-x64.msi}{CMake 3.11.3} e instalar
+\end{itemize}
+
+\subsection{Generar librerías}
+
+\subsubsection{VTK 8.1.1}
+
+\begin{itemize}
+	\item Descargar \href{http://www.vtk.org/files/release/8.1/VTK-8.1.1.zip}{VTK 8.1.1} y extraer los ficheros
+	\item Abrir CMake y completar los siguientes campos:
+	\begin{itemize}
+		\item \textit{src}: \texttt{C:\textbackslash VTK\textbackslash 8.1.1\textbackslash src}
+		\item \textit{build}: \texttt{C:\textbackslash VTK\textbackslash 8.1.1\textbackslash build\textbackslash msvc2017\_64}
+	\end{itemize}
+	\item Usar \texttt{Visual Studio 15 2017 Win 64} como generador
+	\item Marcar las opciones avanzadas
+	\item Una vez generado marcar las siguientes opciones:
+	\begin{itemize}
+		\item \texttt{Module\_vtkDICOM}
+		\item \texttt{Module\_vtkGUISupportQt}
+		\item \texttt{Module\_vtkGUISupportQtOpenGL}
+		\item \texttt{Module\_vtkRenderingQt}
+		\item \texttt{Module\_vtkViewsQt}
+		\item \texttt{VTK\_Group\_Imaging}
+		\item \texttt{VTK\_Group\_Qt}
+	\end{itemize}
+	\item Configurar hasta que no aparezca ninguna opción en rojo
+	\item Pulsar en generar y creará directorios y ficheros en: \\ \texttt{C:\textbackslash VTK\textbackslash 8.1.1\textbackslash build\textbackslash msvc2017\_64}
+\end{itemize}
+
+\subsubsection{ITK 4.13.0}
+
+\begin{itemize}
+	\item item Descargar \href{https://sourceforge.net/projects/itk/files/itk/4.13/InsightToolkit-4.13.0.zip/download}{ITK 4.1.30} y extraer los ficheros
+	\item Abrir CMake y completar los siguientes campos:
+	\begin{itemize}
+		\item \textit{src}: \texttt{C:\textbackslash ITK\textbackslash 4.13.0\textbackslash src}
+		\item \textit{build}: \texttt{C:\textbackslash ITK\textbackslash 4.13.0\textbackslash build\textbackslash msvc2017\_64}
+	\end{itemize}
+	\item Usar \texttt{Visual Studio 15 2017 Win 64} como generador
+	\item Marcar las opciones avanzadas
+	\item Una vez generado marcar las siguientes opciones:
+	\begin{itemize}
+		\item \texttt{Module\_ITKVtkGlue}
+	\end{itemize}
+	\item Configurar y aparecerá un error. Hay que darle a la variable \texttt{VTK\_DIR}: \\ \texttt{C:\textbackslash VTK\textbackslash\ 8.1.1\textbackslash \textbackslash build\textbackslash msvc2017\_64}
+	\item Configurar hasta que no aparezca ninguna opción en rojo
+	\item Pulsar en generar y creará directorios y ficheros en: \\ \texttt{C:\textbackslash ITK\textbackslash 4.13.0\textbackslash build\textbackslash msvc2017\_64}
+\end{itemize}
+
+\subsection{Compilar librerías}
+
+\subsubsection{VTK 8.1.1}
+
+\begin{itemize}
+	\item Abrir \texttt{VTK.sln}
+	\item Compilar \texttt{ALL\_BUILD} en modo \textit{Release} y esperar un tiempo hasta que termine
+	\item Crear una nueva variable de entorno \texttt{VTK\_DIR} con el valor: \\ \texttt{C:\textbackslash VTK\textbackslash 8.1.1\textbackslash build\textbackslash build\textbackslash msvc2017\_64}
+	\item Añadir al \textit{path}: \texttt{\%VTK\_DIR\%\textbackslash bin\textbackslash Release}
+\end{itemize}
+
+\subsubsection{ITK 4.13.0}
+
+\begin{itemize}
+	\item Abrir \texttt{ITK.sln}
+	\item Compilar \texttt{ALL\_BUILD} en modo \textit{Release} y esperar un tiempo hasta que termine
+	\item Crear una nueva variable de entorno \texttt{ITK\_DIR} con el valor: \\ \texttt{C:\textbackslash ITK\textbackslash 4.13.0\textbackslash build\textbackslash build\textbackslash msvc2017\_64}
+	\item Añadir al \textit{path}: \texttt{\%ITK\_DIR\%\textbackslash bin\textbackslash Release}
+\end{itemize}
+
+\subsubsection{Boost 1.67.0}
+
+\begin{itemize}	
+	\item Descargar \href{http://sourceforge.net/projects/boost/files/boost/1.67.0/}{Boost 1.67.0} y extraer los ficheros
+	\item Abrir una \textit{Development Command Prompt for VS2017} en la carpeta donde se han extraido
+	\item Escribir \texttt{bootstrap.bat} y generar \textit{Boost.build}
+	\item Compilar con: \\ \texttt{b2 toolset=msvc --build-type=complete --abbreviate-paths \\ address-model=64 install -j4}
+	\item Crear una nueva variable de entorno \texttt{BOOST\_ROOT} con el valor: \\ \texttt{C:\textbackslash Boost}
+\end{itemize}
+
+\subsubsection{OpenCV 3.4.1}
+
+\begin{itemize}	
+	\item Descargar \href{https://sourceforge.net/projects/opencvlibrary/files/opencv-win/3.4.1/opencv-3.4.1-vc14_vc15.exe/download}{OpenCV 3.4.1}
+	\item Ejecutar y extraer
+	\item Mover la carpeta extraida a \\ \texttt{C:\textbackslash OpenCV\textbackslash 3.4.1}
+	\item Crear una nueva variable de entorno \texttt{OPENCV\_ROOT} con el valor: \\ \texttt{C:\textbackslash OpenCV\textbackslash 3.4.1\textbackslash opencv\textbackslash build\textbackslash x64\textbackslash vc15}
+	\item Crear una nueva variable de entorno \texttt{OPENCV\_DIR} con el valor: \\ \texttt{\%OPENCV\_ROOT\%\textbackslash lib}
+	\item Añadir al path: \texttt{\%OPENCV\_ROOT\%\textbackslash bin}
+\end{itemize}
+
+\subsection{Compilar proyecto}
+
+\begin{itemize}
+	\item Abrir CMake y completar los campos:
+	\begin{itemize}
+		\item \textit{src}: \texttt{\%PROJECT\_PATH\%\textbackslash src}
+		\item \textit{build}: \texttt{\%PROJECT\_PATH\%\textbackslash build}
+	\end{itemize}
+	\item Usar \texttt{Visual Studio 15 2017 Win64} como generador
+	\item Configurar hasta que no haya ninguna opción en rojo
+	\item Presionar en generar y creará directorios y ficheros en: \\ \texttt{\%PROJECT\_PATH\%\textbackslash build}
+	\item Abrir \texttt{3DCurator.sln}
+	\item Abrir \textit{Project Properties} e ir a \textit{Configuration Properties > Linker > System} y:
+	\begin{itemize}
+		\item En \textit{Subsystem} selectionar la opción: \\ \textit{Windows (/SUBSYSTEM:WINDOWS)}
+		\item En \textit{Enable Large Adresses} seleccionar la opción: \\ \textit{Yes (/LARGEADRESSAWARE)}
+	\end{itemize}
+	\item Establecer la solución \texttt{3DCurator} como proyecto predeterminado
+	\item Una vez compilado copiar a la carpeta \texttt{build\textbackslash Release} los archivos DLL \texttt{libEGL.dll}, \texttt{libGLESv2.dll}, \texttt{Qt5Core.dll}, \texttt{Qt5Gui.dll} y \texttt{Qt5Widgets.dll} de la carpeta: \\ \texttt{C:\textbackslash Qt\textbackslash Qt5.11.0\textbackslash 5.11.0\textbackslash msvc2017\_64\textbackslash bin}
+\end{itemize}
 
 \section{Fases de desarrollo}
 
