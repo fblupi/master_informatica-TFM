@@ -277,35 +277,7 @@ Para poder hacer el filtrado hace falta transformar la imagen actual que se encu
 
 A continuación se presenta un pequeño \textit{script} con los pasos a seguir para realizar el filtrado en una imagen en VTK usando filtros de ITK (Código \ref{code:desarrollo/vtk-itk-filtro}):
 
-\begin{lstlisting}[style=C, label=code:desarrollo/vtk-itk-filtro, caption={\textit{script} para usar el filtro media de ITK en una imagen en VTK}]
-// Definir tipo de imagen ITK usando signed short y 3 dimensiones
-typedef signed short PixelType;
-const unsigned int Dimension = 3;
-typedef itk::Image<PixelType,Dimension> ImageType;
-
-// Crear pipeline para pasar una imagen VTK a ITK
-typedef itk::VTKImageToImageFilter<ImageType> VTKImageToImageType;
-VTKImageToImageType::Pointer vtkImageToImage = VTKImageToImageType::New();
-vtkImageToImage->SetInput(imageData);
-vtkImageToImage->Update();
-
-// Filtrar la imagen ITK usando un filtro media
-typedef itk::MeanImageFilter<ImageType,ImageType> MeanImageFilterType;
-MeanImageFilterType::Pointer meanFilter = MeanImageFilterType::New();
-meanFilter->SetInput(vtkImageToImage->GetOutput());
-meanFilter->SetRadius(radius);
-meanFilter->Update();
-
-// Pasara de imagen ITK filtrada a VTK
-typedef itk::ImageToVTKImageFilter<ImageType> ImageToVTKImageType;
-ImageToVTKImageType::Pointer imageToVTKImage = ImageToVTKImageType::New();
-imageToVTKImage->SetInput(meanFilter->GetOutput());
-imageToVTKImage->Update();
-
-// Actualizar la instancia de la imagen VTK
-imageData->DeepCopy(imageToVTKImage->GetOutput());
-imageData->Modified();
-\end{lstlisting}
+\lstinputlisting[caption={\textit{script} para usar el filtro media de ITK en una imagen en VTK}, label=code:desarrollo/vtk-itk-filtro, style=C]{misc/vtk-itk-filtro.cpp}
 
 \subsubsection{Integración con la GUI}
 
@@ -545,7 +517,15 @@ La diferencias con respecto a las anteriores es que antes de crearla hay que int
 
 \subsubsection{Exportar e importar ROD}
 
-TODO
+Todo lo que se ha desarrollado no tiene sentido si no hay posibilidad de guardar todas estas anotaciones para que otro usuario, o el mismo incluso, pueda cargarlos posteriormente.
+
+Para esto se decidió usar XML almacenando esta información en un formato en le que el software pudiese exportar e importarla (Código \ref{code:xmlschema-rod}).
+
+\lstinputlisting[caption={Descripción de formato XML utilizado usando XML Schema}, label=code:xmlschema-rod, style=XML]{misc/xmlschema-rod.xml}
+
+Por ejemplo, una ROD colocada en el centro de la figura con dos reglas, un transportador de ángulos y dos anotaciones sería el siguiente (Código \ref{code:ejemplo-rod}):
+
+\lstinputlisting[caption={Ejemplo de ROD el formato XML descrito}, label=code:ejemplo-rod, style=XML]{misc/ejemplo-rod.xml}
 
 \subsection{Internacionalización}
 

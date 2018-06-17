@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+ <xs:element name="rod">
+ <xs:complexType>
+  <xs:attribute name="name" type="xs:string" use="required"/>
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="pos">
+     <xs:complexType>
+      <xs:sequence>
+       <xs:element name="o">
+        <xs:complexType>
+         <xs:sequence>
+          <xs:element type="xs:float" name="x"/>
+          <xs:element type="xs:float" name="y"/>
+          <xs:element type="xs:float" name="z"/>
+         </xs:sequence>
+        </xs:complexType>
+       </xs:element>
+       <xs:element name="p1">
+        <xs:complexType>
+         <xs:sequence>
+          <xs:element type="xs:float" name="x"/>
+          <xs:element type="xs:float" name="y"/>
+          <xs:element type="xs:float" name="z"/>
+         </xs:sequence>
+        </xs:complexType>
+       </xs:element>
+       <xs:element name="p2">
+        <xs:complexType>
+         <xs:sequence>
+          <xs:element type="xs:float" name="x"/>
+          <xs:element type="xs:float" name="y"/>
+          <xs:element type="xs:float" name="z"/>
+         </xs:sequence>
+        </xs:complexType>
+       </xs:element>
+       <xs:element type="xs:float" name="slice"/>
+      </xs:sequence>
+     </xs:complexType>
+    </xs:element>
+    <xs:element name="rules">
+     <xs:complexType>
+      <xs:element name="rule" maxOccurs="unbounded" minOccurs="0">
+       <xs:complexType>
+        <xs:sequence>
+         <xs:element type="xs:string" name="name"/>
+         <xs:element name="p1">
+          <xs:complexType>
+           <xs:sequence>
+            <xs:element type="xs:float" name="x"/>
+            <xs:element type="xs:float" name="y"/>
+            <xs:element type="xs:float" name="z"/>
+           </xs:sequence>
+          </xs:complexType>
+         </xs:element>
+         <xs:element name="p2">
+          <xs:complexType>
+           <xs:sequence>
+            <xs:element type="xs:float" name="x"/>
+            <xs:element type="xs:float" name="y"/>
+            <xs:element type="xs:float" name="z"/>
+           </xs:sequence>
+          </xs:complexType>
+         </xs:element>
+        </xs:sequence>
+       </xs:complexType>
+      </xs:element>
+     </xs:complexType>
+    </xs:element>
+    <xs:element name="protractors">
+     <xs:complexType>
+      <xs:element name="protractor" maxOccurs="unbounded" minOccurs="0">
+       <xs:complexType>
+        <xs:sequence>
+         <xs:element type="xs:string" name="name"/>
+         <xs:element name="p1">
+          <xs:complexType>
+           <xs:sequence>
+            <xs:element type="xs:float" name="x"/>
+            <xs:element type="xs:float" name="y"/>
+            <xs:element type="xs:float" name="z"/>
+           </xs:sequence>
+          </xs:complexType>
+         </xs:element>
+         <xs:element name="p2">
+          <xs:complexType>
+           <xs:sequence>
+            <xs:element type="xs:float" name="x"/>
+            <xs:element type="xs:float" name="y"/>
+            <xs:element type="xs:float" name="z"/>
+           </xs:sequence>
+          </xs:complexType>
+         </xs:element>
+         <xs:element name="o">
+          <xs:complexType>
+           <xs:sequence>
+            <xs:element type="xs:float" name="x"/>
+            <xs:element type="xs:float" name="y"/>
+            <xs:element type="xs:float" name="z"/>
+           </xs:sequence>
+          </xs:complexType>
+         </xs:element>
+        </xs:sequence>
+       </xs:complexType>
+      </xs:element>
+     </xs:complexType>
+    </xs:element>
+    <xs:element name="annotations">
+     <xs:complexType>
+      <xs:element name="annotation" maxOccurs="unbounded" minOccurs="0">
+       <xs:complexType>
+        <xs:sequence>
+         <xs:element type="xs:string" name="name"/>
+         <xs:element type="xs:string" name="text"/>
+         <xs:element name="p">
+          <xs:complexType>
+           <xs:sequence>
+            <xs:element type="xs:float" name="x"/>
+            <xs:element type="xs:float" name="y"/>
+            <xs:element type="xs:float" name="z"/>
+           </xs:sequence>
+          </xs:complexType>
+         </xs:element>
+        </xs:sequence>
+       </xs:complexType>
+      </xs:element>
+     </xs:complexType>
+    </xs:element>
+   </xs:sequence>
+ </xs:complexType>
+</xs:schema>
