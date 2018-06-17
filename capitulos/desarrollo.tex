@@ -307,6 +307,8 @@ imageData->DeepCopy(imageToVTKImage->GetOutput());
 imageData->Modified();
 \end{lstlisting}
 
+\subsubsection{Integración con la GUI}
+
 La integración con la interfaz es simple e intuitiva. Tan solo hay que pulsar en el botón de filtrado (Figura \ref{fig:desarrollo/gui-filtro}) y aparecerá un cuadro de diálogo donde se podrá elegir el tipo de filtro a aplicar y sus parámetros (Figura \ref{fig:desarrollo/gui-filtro-dialogo}). Una vez seleccionado se pulsa en OK y empezará a filtrar. Es un proceso largo por lo que se coloca un cuadro de diálogo informando al usuario que tenga paciencia.
 
 \begin{figure}[H]
@@ -325,7 +327,9 @@ La integración con la interfaz es simple e intuitiva. Tan solo hay que pulsar e
 	\label{fig:desarrollo/gui-filtro-dialogo}
 \end{figure}
 
-Sin embargo ningún \textit{pipeline} de los filtros citados anteriormente ha ayudado a eliminar el ruido producido por los elementos metálicos (Figura \ref{fig:desarrollo/ruido-clavo}).
+\subsubsection{Problema con el ruido de elementos metálicos}
+
+Ningún \textit{pipeline} de los filtros citados anteriormente ha ayudado a eliminar el ruido producido por los elementos metálicos (Figura \ref{fig:desarrollo/ruido-clavo}).
 
 \begin{figure}[H]
 	\centering
