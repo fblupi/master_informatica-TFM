@@ -481,10 +481,10 @@ Una vez seleccionados estos parámetros pasará a segmentar la pieza y al acabar
 
 TODO
 
-\subsection{Últimas mejoras}
+\subsection{Internacionalización}
 
-TODO
+Una vez terminadas el resto de secciones se pasó a realizar una tarea que acabó resultando tediosa por culpa de no haberla hecho desde un principio. Hablo de la internacionalización: preparar la aplicación para poder traducirla a distintos idiomas. Hasta ahora se tenían todos los textos \textit{hard-coded}, se ha pasado a usar claves y dar los valores a esos claves en una archivo por idioma con el formato TS de Qt.
 
-\section{Problemas y soluciones}
+Una vez rellenos estos archivos hay que compilarlos a formato QM con la herramienta \texttt{lrelease} que proporciona Qt y leer este archivo en el \texttt{main} usando la función \texttt{load()} de \texttt{QTranslator}. Para que los archivos sean accesibles desde la aplicación hay que añadirlos como recursos en un archivo QRC como ya se hace con las imágenes, los iconos y los \textit{presets}.
 
-TODO
+Con estos cambios se puede generar un ejecutable en español e inglés. Con la posibilidad de añadir otros idiomas fácilmente traduciendo los títulos al idioma que se quiere traducir en un nuevo archivo TS, que se compila a QM, se añade al archivo de recursos QRC y se lee con la función \texttt{load()} de \texttt{QTranslator}.
