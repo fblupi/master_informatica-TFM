@@ -532,7 +532,16 @@ Para añadir un nuevo transportador de ángulos hay que seleccionar tres puntos 
 
 \subsubsection{Notas}
 
-TODO
+Además de medir distancias y ángulos, una de las tareas más utilizadas por un restaurador a la hora de examinar una escultura es realizar anotaciones de texto. Para realizar esta tarea se usará otro \textit{widget} de VTK creado para ello, \texttt{vtkCaptionWidget} y se podrán realizar las mismas acciones que con reglas y ángulos (Figura \ref{fig:desarrollo/gui-notas}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4cm]{imagenes/desarrollo/gui-notas}
+	\caption{Listado de notas y acciones para realizar con ellas}
+	\label{fig:desarrollo/gui-notas}
+\end{figure}
+
+La diferencias con respecto a las anteriores es que antes de crearla hay que introducir en un cuadro de texto el contenido de ella. Esto creará el objeto y el usuario tendrá que mover la flecha a donde apunta.
 
 \subsubsection{Exportar e importar ROD}
 
