@@ -365,7 +365,7 @@ Lo primero que tenemos que hacer es preguntarnos a nosotros mismos cómo detecta
 
 Tenemos que buscar una solución computacionalmente menos costosa porque tendríamos que lanzar este algoritmo en todos los cortes del conjunto de datos volumétrico y, normalmente, trabajamos con datos de cientos de cortes.
 
-Cuando los escultores ensamblan las piezas de madera que forman la base de la escultura usan piezas cortadas previamente que encajan y se acoplan más fácilmente. Por tanto el límite entre dos piezas de madera distintas es una línea recta. la detección de este tipo de líneas por un ordenador se puede realizar rápidamente usando técnicas de visión por computador existentes como la transformada de \textit{Hough} \cite{duda72}.
+Cuando los escultores ensamblan las piezas de madera que forman el embón de la escultura usan piezas cortadas previamente que encajan y se acoplan más fácilmente. Por tanto el límite entre dos piezas de madera distintas es una línea recta. la detección de este tipo de líneas por un ordenador se puede realizar rápidamente usando técnicas de visión por computador existentes como la transformada de \textit{Hough} \cite{duda72}.
 
 Pero aplicar este algoritmo directamente a una imagen de un corte no nos daría muy buenos resultados si previamente no aplicamos un algoritmo de detección de bordes. Para hacer esto, vamos a usar uno de los más utilizados, el algoritmo de detección de bordes de \textit{Canny} \cite{canny86}. Con este algoritmo y ajustando algunos parámetros podemos obtener con mayor o menor tolerancia los bordes de una imagen (Figura \ref{fig:desarrollo/canny}) que permitiría utilizar de forma más efectiva la transformada de \textit{Hough} para detectar las líneas rectas de la imagen.
 
@@ -397,6 +397,48 @@ Por tanto, para realizar la segmentación en una sola imagen nos hace falta una 
 	\caption{Proceso completo de la segmentación 2D donde se detalla cuándo interviene el ordenador y cuándo lo hace el usuario}
 	\label{fig:desarrollo/pipeline-segmentacion-2d}
 \end{figure}
+
+\subsubsection{Segmentación 3D}
+
+Para llevar a cabo la segmentación en la totalidad del conjunto de datos volumétrico se realiza la segmentación 2D corte a corte en el eje axial.
+
+Pero como se ha explicado anteriormente, hacen falta tanto la línea que limite la zona de crecimiento como la semilla donde se comience a expandir que no serán los mismos en todos los cortes.
+
+En el caso de la línea es muy difícil que coincida pues rara vez nos encontraremos con un montaje en el que el corte entre las dos piezas forme un ángulo exacto de 90º con respecto al eje axial. Sin embargo, la diferencia entre un corte y otro es milimétrica y la distancia será muy pequeña. Por ello, en lugar de pedir al usuario que elija la línea en cada corte, lo cual sería enormemente tedioso, se realizará una búsqueda de líneas y se escogerá la más cercana a la línea del corte anterior.
+
+Para determinar el criterio de proximidad vamos a utilizar dos factores:
+
+\begin{itemize}
+	\item \textbf{Ángulo entre dos líneas}: Dos líneas proyectadas en el mismo plano que forman un ángulo muy pequeño serán muy similares.
+	$$ cos(\alpha) = \frac{|u_0 v_0 + u_1 v_1|}{\sqrt{u_0^2 + u_1^2}\sqrt{v_0^2 + v_1^2}} $$
+	\item \textbf{Distancia de un punto de una de ellas a la otra}: El ángulo solo no basta. Pues puede que tengan un ángulo muy parecido pero su punto de corte se encuentre muy lejos del espacio que se observa en el visor. Es por ello que hay que tener en cuenta este factor, pues los dos puntos que definen una línea se van a encontrar siempre en el espacio del visor pues es en este donde se lleva a cabo la operación de la búsqueda de líneas rectas y si la distancia mínima de uno de los dos puntos a la otra recta es pequeña significará que las dos líneas se cortan o en el propio espacio que vemos o cerca de éste.
+	$$ d(P, r) = \frac{A P_0 + B P_1 + C}{\sqrt{A^2 + B^2}} $$
+\end{itemize}
+
+En determinados cortes puede ser que no se observe con suficiente nitidez el borde que separan las dos piezas de madera y por tanto, la transformada de \textit{Hough} no encuentre aquí ninguna línea recta.
+
+Para lidiar con este problema se omitirán este corte y todos los sucesivos donde no encuentre ninguna línea hasta que se de con uno en el que sí. Entonces se trazará un plano que pase por la línea del último corte donde se había encontrado hasta la línea de éste y se utilizará este plano para generar las líneas en todos los cortes intermedios.
+
+Que la semilla de expansión varíe entre corte y corte pasa en menos ocasiones que con la línea pero, a no ser que se trate de una escultura muy regular y se escoja una semilla que sirva para todos los cortes, habrá ocasiones en las que habrá que cambiarla.
+
+Un método que podría servir sería calcular el centroide del área inmediatamente anterior, pero el cálculo de éste es bastante costoso, por lo que, en vez de utilizar el centroide, se utiliza el punto medio: 
+$$ M(x,y) = (\frac{x_{min} + x_{max}}{2}, \frac{y_{min} + y_{max}}{2}) $$
+que puede ser calculado mientras se está realizando la segmentación.
+
+Como habrá casos en los que este punto medio sea un píxel con un valor escalar fuera de los rangos de valores de madera, por ejemplo podría coincidir con una grieta en ésta, se realizará una expansión (respetando el límite de la línea previamente calculada) hasta encontrar el primer píxel cuyo valor corresponda a la madera para utilizarlo como semilla.
+
+Como podemos ver en los ejemplos (Figura \ref{fig:desarrollo/ejemplos-segmentacion}), se ha creado un método de segmentación semiautomática eficaz con el que poder segmentar dos piezas de madera en un conjunto de datos volumétrico adaptando la segmentación basada en el crecimiento de regiones tradicional para que se vea limitada por una línea que es detectada haciendo uso de técnicas de visión por computador.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4cm]{imagenes/desarrollo/corte-segmentado-1}
+	\includegraphics[width=4cm]{imagenes/desarrollo/corte-segmentado-2}
+	\includegraphics[width=4cm]{imagenes/desarrollo/corte-segmentado-3}
+	\caption{Resultado de segmentación en distintos cortes}
+	\label{fig:desarrollo/ejemplos-segmentacion}
+\end{figure}
+
+Durante todo el proceso, la intervención del usuario solo se da en dos ocasiones: para elegir qué línea utilizar como separadora de piezas y para la selección de la semilla por donde comenzar la expansión.
 
 \subsection{Herramientas de documentación}
 
