@@ -440,6 +440,43 @@ Como podemos ver en los ejemplos (Figura \ref{fig:desarrollo/ejemplos-segmentaci
 
 Durante todo el proceso, la intervención del usuario solo se da en dos ocasiones: para elegir qué línea utilizar como separadora de piezas y para la selección de la semilla por donde comenzar la expansión.
 
+\subsubsection{Exportar e importar volumen}
+
+Para poder trabajar con el volumen resultado de la segmentación sin tener que segmentarlo todas las veces que se quiera trabajar con él es necesario poder exportarlo a un formato que luego pueda interpretar la aplicación para importarlo.
+
+Se va a utilizar el formato VTI propio de VTK, que utiliza XML para guardar la información del volumen. Para ello hay que hacer uso de las clases \texttt{vtkXMLImageDataWriter} para exportar y \texttt{vtkXMLImageDataReader} para importar.
+
+Además, gracias al uso de este tipo de archivo, se puede reducir bastante el tamaño de los archivos con datos volumétricos. Los datos en crudo en formato DICOM de una de las esculturas ocupan 236MB, mientras que esos mismos datos extraídos a formato VTI pasan a ocupar casi la mitad, 128MB.
+
+\subsubsection{Integración con la GUI}
+
+Para integrarlo con la interfaz gráfica se ha hecho algo parecido a lo que se hizo con la parte de borrar partes. Se puede activar un modo de segmentación que cambia el interactor del visor de cortes para que atienda al evento del click izquierdo del ratón para usar el píxel clickado como semilla (Figura \ref{fig:desarrollo/gui-segmentacion}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=11cm]{imagenes/desarrollo/gui-segmentacion}
+	\caption{Botón que hay que pulsar para cambiar a modo de segmentación}
+	\label{fig:desarrollo/gui-segmentacion}
+\end{figure}
+
+A continuación se pasarán a detectar las líneas rectas de ese corte y se le mostrará una ventana al usuario donde elegirá la línea que quiere utilizar como semilla y si quiere que se fuerce hacia arriba y hacia abajo la segmentación (Figura \ref{fig:desarrollo/gui-segmentacion-linea}). Si no se seleccionan estas opciones, si se deja de encontrar líneas coincidentes con la semilla en cortes superiores o inferiores no se forzará el crecimiento en estos cortes.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=11cm]{imagenes/desarrollo/gui-segmentacion-linea}
+	\caption{Líneas detectadas en el corte. El usuario tiene que elegir cuál quiere utilizar}
+	\label{fig:desarrollo/gui-segmentacion-linea}
+\end{figure}
+
+Una vez seleccionados estos parámetros pasará a segmentar la pieza y al acabar mostrará otra ventana con el volumen resultado para preguntar al usuario si lo quiere o no exportar.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=11cm]{imagenes/desarrollo/gui-segmentacion-resultado}
+	\caption{Resultado de la segmentación, si se pulsa en OK se pasará a guardar}
+	\label{fig:desarrollo/gui-segmentacion-resultado}
+\end{figure}
+
 \subsection{Herramientas de documentación}
 
 TODO
