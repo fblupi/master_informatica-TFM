@@ -515,11 +515,20 @@ Las acciones a realizar son: añadir, eliminar y ocultar/mostrar (Figura \ref{fi
 	\label{fig:desarrollo/gui-reglas}
 \end{figure}
 
-Al añadir una nueva regla habrá que seleccionar los puntos inicial y final que se quieren medir y se mostrará la medida real en milímetros. No hay límite de reglas, por lo que se pueden crear tantas como se quieran.
+Al añadir una nueva regla habrá que seleccionar los puntos inicial y final que se quieren medir y se mostrará la medida real en milímetros. No hay límite de reglas, por lo que se pueden crear tantas como se quieran. Si se quiere editar tan solo hay que seleccionar y mover uno de los puntos.
 
 \subsubsection{Transportadores de ángulos}
 
-TODO
+Otra funcionalidad útil parecida a la de medir distancias es medir ángulos. Además, VTK también proporciona un \textit{widget} para realizar esta tarea: \texttt{vtkAngleWidget}. El funcionamiento con los ángulos es exactamente el mismo que el de las reglas. Pertenecen a una ROD, se pueden añadir tantos como se quieran y se pueden eliminar y ocultar/mostrar (Figura \ref{fig:desarrollo/gui-angulos}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4cm]{imagenes/desarrollo/gui-angulos}
+	\caption{Listado de transportadores de ángulos y acciones para realizar con ellos}
+	\label{fig:desarrollo/gui-angulos}
+\end{figure}
+
+Para añadir un nuevo transportador de ángulos hay que seleccionar tres puntos en este orden: desde dónde, centro y hasta dónde. El resultado será el ángulo formado en grados. Para editarlo solo hay que seleccionar y mover cualquiera de sus puntos.
 
 \subsubsection{Notas}
 
