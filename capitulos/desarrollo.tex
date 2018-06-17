@@ -479,11 +479,28 @@ Una vez seleccionados estos parámetros pasará a segmentar la pieza y al acabar
 
 \subsection{Herramientas de documentación}
 
-TODO
+Hasta ahora, el usuario ha podido analizar la escultura, pero todas las anotaciones las ha debido hacer a parte en una libreta o un documento digital. Lo complicado está en cuando ha tenido que colocar el plano en una posición extraña a la hora de encontrar un artefacto de interés. ¿Cómo lo vuelve a colocar así cuando abra de nuevo el programa? O más complicado todavía, ¿cómo lo pone un compañero que también esté trabajando en esa figura?
+
+Es necesario poder proveer a la aplicación de funcionalidad para poder guardar anotaciones y dónde las ha encontrado para poder continuar con el trabajo en distintas sesiones.
 
 \subsubsection{ROD}
 
-TODO
+Se ha creado un término, ROD (que viene de las siglas del inglés \textit{Region of Documentation}), que no es más que la posición de un plano en una figura donde realizar anotaciones.
+
+Para crearlo, el usuario tan solo tiene que colocar el plano en la posición deseada y añadir una ROD (Figura \ref{fig:desarrollo/gui-rod-nuevo}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4cm]{imagenes/desarrollo/gui-rod-nuevo}
+	\caption{Listado de ROD y acciones para realizar con ellos}
+	\label{fig:desarrollo/gui-rod-nuevo}
+\end{figure}
+
+Al crear la ROD se le pedirá darle un nombre, y si no se proporciona ningún nombre se le pone uno por defecto.
+
+Una vez esté la ROD creada, si el usuario mueve el plano de corte y quiere volver al plano de corte que había guardado, solo tiene que pulsar en el dentro de la lista de ROD.
+
+Si se ha equivocado o ya no lo necesita lo puede borrar utilizando el botón específico para ello.
 
 \subsubsection{Reglas}
 
