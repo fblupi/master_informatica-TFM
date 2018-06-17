@@ -487,13 +487,13 @@ Es necesario poder proveer a la aplicación de funcionalidad para poder guardar 
 
 Se ha creado un término, ROD (que viene de las siglas del inglés \textit{Region of Documentation}), que no es más que la posición de un plano en una figura donde realizar anotaciones.
 
-Para crearlo, el usuario tan solo tiene que colocar el plano en la posición deseada y añadir una ROD (Figura \ref{fig:desarrollo/gui-rod-nuevo}).
+Para crearlo, el usuario tan solo tiene que colocar el plano en la posición deseada y añadir una ROD (Figura \ref{fig:desarrollo/gui-rod}).
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=4cm]{imagenes/desarrollo/gui-rod-nuevo}
-	\caption{Listado de ROD y acciones para realizar con ellos}
-	\label{fig:desarrollo/gui-rod-nuevo}
+	\includegraphics[width=4cm]{imagenes/desarrollo/gui-rod}
+	\caption{Listado de ROD y acciones para realizar con ellas}
+	\label{fig:desarrollo/gui-rod}
 \end{figure}
 
 Al crear la ROD se le pedirá darle un nombre, y si no se proporciona ningún nombre se le pone uno por defecto.
@@ -504,7 +504,18 @@ Si se ha equivocado o ya no lo necesita lo puede borrar utilizando el botón esp
 
 \subsubsection{Reglas}
 
-TODO
+La herramienta de las reglas ya se creó anteriormente en el TFG usando el \textit{widget} de VTK \texttt{vtkDistanceWidget}. Sin embargo, al introducir este nuevo concepto de ROD, hay que adaptarlo para que, las reglas creadas no pertenezcan a un espacio global si no a una ROD específica. De esta forma, al mover el plano estas medidas, que ya dejan de tener sentido, desaparecen y puedes volver a verlas seleccionando de nuevo la ROD a la que pertenecen.
+
+Las acciones a realizar son: añadir, eliminar y ocultar/mostrar (Figura \ref{fig:desarrollo/gui-reglas}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4cm]{imagenes/desarrollo/gui-reglas}
+	\caption{Listado de reglas y acciones para realizar con ellas}
+	\label{fig:desarrollo/gui-reglas}
+\end{figure}
+
+Al añadir una nueva regla habrá que seleccionar los puntos inicial y final que se quieren medir y se mostrará la medida real en milímetros. No hay límite de reglas, por lo que se pueden crear tantas como se quieran.
 
 \subsubsection{Transportadores de ángulos}
 
