@@ -66,3 +66,69 @@ El filtro mediana se utiliza para reducir el ruido de tipo \textit{salt-and-pepp
 \end{figure}
 
 Los resultados con este filtro son incluso más agresivos que los obtenidos con el de media. Pero es lógico al ser un filtro creado para reducir un tipo de ruido que no presentan nuestras imágenes.
+
+\section{Segmentación}
+
+Se ha probado el método de segmentación propuesto para separar las piezas del embón de ambas esculturas.
+
+\subsection{Inmaculada Concepción}
+
+En la Inmaculada Concepción hay dos piezas principales en el embón a derecha e izquierda que se puede contemplar muy bien en cualquier corte axial desde la altura del pecho hasta abajo. Por tanto se podría usar como semilla cualquiera de estos cortes pues seguramente encuentre la línea que separa ambas partes entre las líneas rectas más grandes encontradas en este corte.
+
+Se ha utilizado uno de estos cortes y se ha encontrado fácilmente esta línea (Figura \ref{fig:resultados/segmentacion/inmaculada-concepcion/seleccion-linea}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=12cm]{imagenes/resultados/segmentacion/inmaculada-concepcion/seleccion-linea}
+	\caption{Líneas encontradas en un corte a la altura de la cintura donde se ve la línea (verde) que separa las dos piezas del embón}
+	\label{fig:resultados/segmentacion/inmaculada-concepcion/seleccion-linea}
+\end{figure}
+
+Esta línea divide perfectamente en dos la figura obteniendo los resultados de a continuación (Figuras \ref{fig:resultados/segmentacion/inmaculada-concepcion/dcha} y \ref{fig:resultados/segmentacion/inmaculada-concepcion/dcha}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=6cm]{imagenes/resultados/segmentacion/inmaculada-concepcion/dcha-3d}
+	\includegraphics[width=6cm]{imagenes/resultados/segmentacion/inmaculada-concepcion/dcha-corte}
+	\caption{Volumen con la pieza de la derecha y un corte donde se ve dónde ha cortado}
+	\label{fig:resultados/segmentacion/inmaculada-concepcion/dcha}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=6cm]{imagenes/resultados/segmentacion/inmaculada-concepcion/izda-3d}
+	\includegraphics[width=6cm]{imagenes/resultados/segmentacion/inmaculada-concepcion/izda-corte}
+	\caption{Volumen con la pieza de la izquierda y un corte donde se ve dónde ha cortado}
+	\label{fig:resultados/segmentacion/inmaculada-concepcion/izda}
+\end{figure}
+
+\subsection{San Juan Evangelista}
+
+En el San Juan Evangelista hay dos piezas principales en el embón una muy grande frontal y otra bastante más pequeña trasera. Esta pequeña no se puede ver por la zona de la cabeza y en la zona de la cintura hay un clavo que hace que no se diferencie muy bien la línea recta. Sin embargo, por la zona del pecho se puede encontrar una buena semilla donde se detecte la línea que corta ambas piezas de madera.
+
+Se ha utilizado un corte por esta zona y se ha encontrado esta línea (Figura \ref{fig:resultados/segmentacion/inmaculada-concepcion/seleccion-linea}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=12cm]{imagenes/resultados/segmentacion/san-juan-evangelista/seleccion-linea}
+	\caption{Líneas encontradas en un corte a la altura de la cintura donde se ve la línea (azul) que separa las dos piezas del embón}
+	\label{fig:resultados/segmentacion/san-juan-evangelista/seleccion-linea}
+\end{figure}
+
+Esta línea divide perfectamente en dos la figura obteniendo los resultados de a continuación (Figuras \ref{fig:resultados/segmentacion/san-juan-evangelista/frontal} y \ref{fig:resultados/segmentacion/san-juan-evangelista/trasero}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=6cm]{imagenes/resultados/segmentacion/san-juan-evangelista/frontal-3d}
+	\includegraphics[width=6cm]{imagenes/resultados/segmentacion/san-juan-evangelista/frontal-corte}
+	\caption{Volumen con la pieza frontal y un corte donde se ve dónde ha cortado}
+	\label{fig:resultados/segmentacion/san-juan-evangelista/frontal}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=6cm]{imagenes/resultados/segmentacion/san-juan-evangelista/trasero-3d}
+	\includegraphics[width=6cm]{imagenes/resultados/segmentacion/san-juan-evangelista/trasero-corte}
+	\caption{Volumen con la pieza trasera y un corte donde se ve dónde ha cortado}
+	\label{fig:resultados/segmentacion/san-juan-evangelista/trasero}
+\end{figure}
