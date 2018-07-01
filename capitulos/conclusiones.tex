@@ -1,3 +1,31 @@
 \chapter{Conclusiones y trabajos futuros}
 
-TODO
+En este último capítulo se comentarán las conclusiones a las que se han llegado así como las posibles mejoras en el futuro que se podrían realizar.
+
+\section{Conclusiones}
+
+Partíamos de un \textit{software} desarrollado previamente, durante el Trabajo de Fin de Grado, que permitía cargar una serie de imágenes DICOM y renderizar el volumen. Permitiendo cambiar la función de transferencia para centrarse en unos u otros materiales, realizar cortes arbitrarios para ver el interior de la figura, exportar la malla usando el método de \textit{marching cubes} y borrar partes innecesarias del volumen.
+
+Con todo esto, un restaurador ya podía utilizar este programa y llegaría a realizar estudios mucho más completos que con otras técnicas.
+
+No obstante, no podíamos quedarnos estancados ahí y había todavía bastantes cosas que hacer. Es por ello por lo que se decidió continuar el desarrollo de este \textit{software} durante este Trabajo de Fin de Máster.
+
+Los objetivos los dividimos inicialmente en tres: filtrado, segmentación y documentación.
+
+La idea principal que teníamos con el filtrado fue la de reducir el ruido producido por artefactos metálicos. No obstante no encontramos un \textit{pipeline} de filtros que lo consiguieran y vimos como otros estudios delegaban responsabilidades a la etapa del escaneo en la que, gracias a los avances en éstos y ajustándolos con parámetros adecuados, podía reducirse \cite{boas12}.
+
+Sin embargo se integraron en el software tres filtros: \textit{gaussiano}, media y mediana, pues podrían resultar útiles tanto para suavizar imágenes ruidosas (\textit{gaussiano} y media) como para acabar con el ruido de tipo \textit{salt-and-pepper} (mediana).
+
+La segmentación para obtener las distintas piezas de madera resultó todo un reto. Ninguno de los filtros ya existentes utilizados en medicina nos era útil y no había estudios previos que tratasen de resolver este problema.
+
+Se fueron realizando pruebas combinando y modificando filtros ya existentes hasta que se dio con una técnica que resultó ser bastante eficaz. Estaba basada en el filtro básico de crecimiento basado en umbral, agregando una restricción más marcada por una línea. Esta línea era detectada usando técnicas de visión por computador como el filtro de \textit{Canny} y la transformada de \textit{Hough}. Y su extensión para ser usado en todos los cortes de un volumen resultaba casi trivial, pues lo único que había que buscar eran dos semillas: una donde se comienza el crecimiento, que casi siempre era la misma que la primera, y otra para generar la línea que delimitara el crecimiento, que se lograría detectando todas las líneas de ese corte y comparando similitud con la que era la línea delimitante en el corte anterior.
+
+El método por tanto es semi-automático aunque solo necesita la interacción del usuario en dos pasos. Sin embargo es un método algo limitado pues solo sirve para dividir un volumen en dos. Aunque, no evita poder dividir en $n$ aunque habría que realizar el proceso $n-1$ veces.
+
+Por último, la parte de documentación se preveía como la más sencilla de desarrollar. Y nada más lejos de la realidad, pues había \textit{widgets} ya presentes en la librería VTK y tan solo había que empaparse de la documentación e integrarlos en el \textit{software}.
+
+El desarrollo de toda esta funcionalidad nueva ha permitido generar una nueva versión de esta aplicación libre y gratuita que se puede descargar para \textit{Windows} desde su \href{https://fblupi.github.io/3DCurator/es/}{web oficial}.
+
+Todo el desarrollo se ha hecho en un \href{https://github.com/fblupi/3DCurator}{repositorio} \textit{git} alojado en \textit{GitHub}. Siguiendo una gestión de ramas basada en \textit{Gitflow} y con \textit{templates} para los \textit{issues} que hacen más sencilla la comunicación con los usuarios ya que pueden publicar su \textit{feedback} más fácilmente.
+
+La aplicación ya cuenta con varios usuarios que han contactado conmigo dando las gracias por la aplicación y pidiendo soporte para realizar algunas tareas específicas. Sin duda, resulta satisfactorio ver cómo se puede ayudar a otro sector tan distinto a la informática con herramientas que lo pueden modernizar.
