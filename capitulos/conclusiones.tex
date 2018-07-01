@@ -29,3 +29,11 @@ El desarrollo de toda esta funcionalidad nueva ha permitido generar una nueva ve
 Todo el desarrollo se ha hecho en un \href{https://github.com/fblupi/3DCurator}{repositorio} \textit{git} alojado en \textit{GitHub}. Siguiendo una gestión de ramas basada en \textit{Gitflow} y con \textit{templates} para los \textit{issues} que hacen más sencilla la comunicación con los usuarios ya que pueden publicar su \textit{feedback} más fácilmente.
 
 La aplicación ya cuenta con varios usuarios que han contactado conmigo dando las gracias por la aplicación y pidiendo soporte para realizar algunas tareas específicas. Sin duda, resulta satisfactorio ver cómo se puede ayudar a otro sector tan distinto a la informática con herramientas que lo pueden modernizar.
+
+\section{Trabajos futuros}
+
+El ciclo de vida de un producto \textit{software} solo termina cuando se abandona y a éste todavía le queda bastante vida por delante. Hay, principalmente, dos aspectos que me gustaría tratar en un futuro.
+
+El primero quizás sea el menos importante de cara a muchos usuarios pero uno de los más importantes para mi: la compilación del software en las otras dos grandes plataformas (\textit{Linux} y \textit{Mac OS}). Hasta ahora solo he podido compilarlo con éxito para Windows, obteniendo dos fallos similares en las otras dos plataformas basadas en \textit{Unix}. Me gustaría indagar en el problema y resolverlo pues creo que está en la combinación de las librerías Qt y VTK.
+
+El otro es la mejora del método de segmentación. El que hay ahora da buenos resultados y es relativamente rápido. Pero para dividir una pieza formada por tres líneas (como los cuernos de luna de la escultura de la Inmaculada Concepción) debería realizar tres cortes. Sería interesante desarrollar un método totalmente automático que encontrase todos los planos de corte de la figura y generase todos los subvolúmenes a partir de ellos. Se ha empezado a trabajar en este método pero se ha visto como no es tan sencillo como podría parecer inicialmente por el gran número de líneas que encuentra que no son más que falsos positivos. El desarrollo de esta funcionalidad, por tanto, puede ser bastante largo y lleno de inconvenientes que se irán encontrando conforme se vaya avanzando. Pero no deja de ser un reto y los ingenieros no debemos tenerles miedo.
