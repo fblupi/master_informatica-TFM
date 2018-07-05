@@ -465,6 +465,8 @@ Otro estudio más reciente \cite{boas12} usando escáneres más modernos asegura
 
 El objetivo de esta sección es poder dividir el modelo de una escultura en las distintas piezas de madera que la conforman.
 
+Una de las primeras aproximaciones fue utilizar técnicas de aprendizaje automático como redes neuronales. Pero necesitaríamos una batería de ejemplos grande y apenas teníamos dos figuras. Además, si entrenáramos solo con imágenes de éstas no presentaría el mismo resultado con otras figuras. Por tanto se decidió optar por técnicas más tradicionales. 
+
 Anteriormente hemos analizado las soluciones que se utilizan actualmente y hemos visto como no son efectivas para resolver nuestro problema. Por tanto, es el momento de proponer e implementar una solución efectiva capaz de separar las distintas piezas de las que está compuesta la escultura.
 
 Para abordar esta situación se va a seguir una de las máximas más importantes a la hora de solucionar problemas, que no es más que dividir el problema en sub-problemas más pequeños. Por lo que, en primer lugar se intentará segmentar una sola imagen y posteriormente aplicar esta solución en todos los cortes del conjunto de datos.
