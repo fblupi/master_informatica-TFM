@@ -4,7 +4,7 @@ En este capítulo se realizará un estudio detallado del estado del arte para po
 
 \section{Desarrollo profundo del estado del arte}
 
-Este trabajo es la continuación de mi anteior TFG donde traté el tema de la renderización de conjuntos de datos volumétricos, este trabajo está dirigido al tratamiento de este conjunto de datos.
+Este trabajo es la continuación de mi anteior TFG donde traté el tema de la renderización de conjuntos de datos volumétricos, en esta ocasión pasará a estar dirigido al tratamiento de este conjunto de datos.
 
 Un conjunto de datos volumétrico o campo escalar 3D está representado por una función $R^{3} \rightarrow R$. En otras palabras, se trata de un conjunto de datos representado por una matriz tridimensional, donde cada elemento de esta matriz se puede denominar vóxel y es importante tener claro que el valor de este no es un color sino un valor como tal que posteriormente se renderizará con un color y una transparencia según una función de transferencia. Es ahí donde erradica la separación conceptual entre modelado y visualización de un conjunto de datos volumétrico.
 
@@ -192,9 +192,9 @@ La segmentación trata de buscar los vóxeles que pertenecen a una estructura. E
 
 Esta segmentación es muy básica y trata de diferenciar las regiones utilizando dos umbrales de valor de intensidad y realizando un filtro en el que se descartasen todos aquellos vóxeles que no se encuentran entre estos valores \cite{otsu79}.
 
-El uso de los histogramas de valores de la imagen pueden resultar útiles a la hora de seleccionar los umbrales.
+El uso de los histogramas de valores de la imagen puede resultar útil a la hora de seleccionar los umbrales.
 
-Este método puede resultar útil para separar materiales con diferencias notables entre valores de densidad. En nuestro caso podría servir para separar madera de estuco, por ejemplo.
+Este método es eficaz para separar materiales con diferencias notables entre valores de densidad. En nuestro caso podría servir para separar madera de estuco, por ejemplo.
 
 \subsubsection{Segmentación basada en crecimiento usando umbrales}
 
@@ -207,7 +207,7 @@ La segmentación basada en crecimiento usando umbrales es una extensión del mé
 	\label{fig:desarrollo/segmentacion-crecimiento-umbral}
 \end{figure}
 
-Una variante de este método sería usar umbrales dinámicos. Es decir, en lugar de utilizar un valor máximo y mínimo global para toda la imagen (por ejemplo, valores de densidad entre -700 y -300), usar un rango dependiendo del punto donde se encuentro (por ejemplo, si el rango es de 100 y estamos en un punto con valor -532, el umbral para sus vecinos estaría entre -632 y -432). Este es el método de segmentación que se implementó en el TFG para segmentar las piezas separadas de la escultura como los elementos de la camilla.
+Una variante de este método sería usar umbrales dinámicos. Es decir, en lugar de utilizar un valor máximo y mínimo global para toda la imagen (por ejemplo, valores de densidad entre -700 y -300), usar un rango dependiendo del punto donde se encuentra (por ejemplo, si el rango es de 100 y estamos en un punto con valor -532, el umbral para sus vecinos estaría entre -632 y -432). Este es el método de segmentación que, sin conocer el concepto de segmentación, ya se implementó en el TFG para borrar las piezas separadas de la escultura como los elementos de la camilla.
 
 En este caso es muy importante elegir el punto inicial, pues si se escoge un punto que se encuentre cercano al borde, puede hacer que la segmentación se extienda a zonas no deseadas.
 
@@ -274,7 +274,7 @@ Ha sido un compromiso y esfuerzo propio utilizar las últimas versiones de estas
 \subsubsection{Qt5.11.0}
 
 \begin{itemize}
-	\item Descargar e instalar \href{http://download.qt.io/official_releases/qt/5.11/5.11.0/qt-opensource-windows-x86-5.11.0.exe}{Qt5.11.00} e instalar para el compilador \textit{msvc2017 64-bit}
+	\item Descargar e instalar \href{http://download.qt.io/official_releases/qt/5.11/5.11.0/qt-opensource-windows-x86-5.11.0.exe}{Qt5.11.0} e instalar para el compilador \textit{msvc2017 64-bit}
 	\item Crear una nueva variable de entorno \texttt{QTDIR} con el valor \\ \texttt{C:\textbackslash Qt\textbackslash Qt5.11.0}
 	\item Añadir al \textit{path}: \texttt{C:\textbackslash Qt\textbackslash Qt5.11.0\textbackslash 5.11.0\textbackslash msvc2017\_64\textbackslash bin}
 \end{itemize}
@@ -459,7 +459,7 @@ Y es que ningún filtro estudiado sería capaz de reducir este ruido. Pues el ta
 
 Hay estudios que aseguran haber reducido este ruido en imágenes médicas con pequeños implantes metálicos \cite{deman98} \cite{watzke04}, pero no detallan el comportamiento de su algoritmo para reproducirlo y además, en las imágenes de prueba que utilizan el ruido es ínfimo comparado con el caso de nuestros datos.
 
-Otro estudio más reciente \cite{boas12} usando escáneres más modernos aseguran que retocando los parámetros de este podría eliminarse prácticamente por completo. Por lo que, resolver este problema pasa a ser responsabilidad de la primera fase del flujo del modelado de conjuntos volumétrico, la obtención de datos.
+Otro estudio más reciente \cite{boas12} usando escáneres más modernos aseguran que retocando los parámetros de éste podría eliminarse prácticamente por completo. Por lo que, resolver este problema pasa a ser responsabilidad de la primera fase del flujo del modelado de conjuntos volumétrico, la obtención de datos.
 
 \subsection{Subdivisión de piezas de madera}
 
@@ -598,7 +598,7 @@ Una vez seleccionados estos parámetros pasará a segmentar la pieza y al acabar
 
 \subsection{Herramientas de documentación}
 
-Hasta ahora, el usuario ha podido analizar la escultura, pero todas las anotaciones las ha debido hacer a parte en una libreta o un documento digital. Lo complicado está en cuando ha tenido que colocar el plano en una posición extraña a la hora de encontrar un artefacto de interés. ¿Cómo lo vuelve a colocar así cuando abra de nuevo el programa? O más complicado todavía, ¿cómo lo pone un compañero que también esté trabajando en esa figura?
+Hasta ahora, el usuario ha podido analizar la escultura, pero todas las anotaciones las ha debido hacer a parte en una libreta o un documento digital. Pero si ha tenido que colocar el plano en una posición extraña a la hora de encontrar un artefacto de interés, ¿cómo lo vuelve a colocar así cuando abra de nuevo el programa? o más complicado todavía, ¿cómo lo pone un compañero que también esté trabajando en esa figura?
 
 Es necesario poder proveer a la aplicación de funcionalidad para poder guardar anotaciones y dónde las ha encontrado para poder continuar con el trabajo en distintas sesiones.
 
@@ -617,7 +617,7 @@ Para crearlo, el usuario tan solo tiene que colocar el plano en la posición des
 
 Al crear la ROD se le pedirá darle un nombre, y si no se proporciona ningún nombre se le pone uno por defecto.
 
-Una vez esté la ROD creada, si el usuario mueve el plano de corte y quiere volver al plano de corte que había guardado, solo tiene que pulsar en el dentro de la lista de ROD.
+Una vez esté la ROD creada, si el usuario mueve el plano de corte y quiere volver al plano de corte que había guardado, solo tiene que pulsar en él dentro de la lista de ROD.
 
 Si se ha equivocado o ya no lo necesita lo puede borrar utilizando el botón específico para ello.
 

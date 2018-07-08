@@ -20,7 +20,7 @@ La segmentación para obtener las distintas piezas de madera resultó todo un re
 
 Se fueron realizando pruebas combinando y modificando filtros ya existentes hasta que se dio con una técnica que resultó ser bastante eficaz. Estaba basada en el filtro básico de crecimiento basado en umbral, agregando una restricción más marcada por una línea. Esta línea era detectada usando técnicas de visión por computador como el filtro de \textit{Canny} y la transformada de \textit{Hough}. Y su extensión para ser usado en todos los cortes de un volumen resultaba casi trivial, pues lo único que había que buscar eran dos semillas: una donde se comienza el crecimiento, que casi siempre era la misma que la primera, y otra para generar la línea que delimitara el crecimiento, que se lograría detectando todas las líneas de ese corte y comparando similitud con la que era la línea delimitante en el corte anterior.
 
-El método por tanto es semi-automático aunque solo necesita la interacción del usuario en dos pasos. Sin embargo es un método algo limitado pues solo sirve para dividir un volumen en dos. Aunque, no evita poder dividir en $n$ aunque habría que realizar el proceso $n-1$ veces.
+El método por tanto es semi-automático aunque solo necesita la interacción del usuario en dos pasos. Sin embargo es un método algo limitado pues solo sirve para dividir un volumen en dos. Aunque, no evita poder dividir en $n$ aunque habría que realizar el proceso, al menos, $n-1$ veces.
 
 Por último, la parte de documentación se preveía como la más sencilla de desarrollar. Y nada más lejos de la realidad, pues había \textit{widgets} ya presentes en la librería VTK y tan solo había que empaparse de la documentación e integrarlos en el \textit{software}.
 

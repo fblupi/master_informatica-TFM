@@ -14,7 +14,7 @@ Las tareas de desarrollo que se integrarán con el \textit{software} desarrollad
 	\item \textbf{Herramientas de documentación}: Se incluirán herramientas para ayudar a los usuarios en la tarea de documentación permitiendo, por ejemplo, incluir distintas anotaciones en puntos de interés.
 \end{itemize}
 
-A parte se van a realizar mejoras en el código para que sea más legible y mantenible como la internacionalización pues hasta ahora todos los textos estaban \textit{hard-coded}.
+A parte se van a realizar mejoras en el código para que sea más legible y mantenible. Como la internacionalización pues, hasta ahora, todos los textos estaban \textit{hard-coded}.
 
 Además de las librerías que ya se utilizaron: VTK \cite{vtk} (visualización), Qt \cite{qt} (GUI) y Boost \cite{boost} (XML); se utilizarán las librerías ITK \cite{itk} y OpenCV \cite{opencv} para el análisis de imágenes y la visión por computador respectivamente. Haciendo uso de CMake \cite{cmake} para pre-compilarlas todas juntas.
 
@@ -24,7 +24,7 @@ Antes de empezar a profundizar en aspectos técnicos se realizará una introducc
 
 \subsection{Historia}
 
-La tomografía computarizada (TC) es una técnica de obtención de imágenes muy utilizado en el campo de la medicina para, por ejemplo, localizar y ver el tamaño de tumores.
+La tomografía computarizada (TC) es una técnica de obtención de imágenes muy utilizada en el campo de la medicina para, por ejemplo, localizar y ver el tamaño de tumores.
 
 Sus orígenes se remontan a los años 60 cuando en 1967 Goodfrey Newblod Hounsfield propuso la elaboración del que llamó escáner EMI, base para desarrollar el Tomógrafo Axial Computarizado (TAC). El objetivo era ``\textit{crear una imagen tridimensional de un objeto tomando múltiples mediciones del mismo con la misma fuente de rayos X desde diferentes ángulos y utilizar un ordenador que permita reconstruir a partir de cientos de `planos' superpuestos y entrecruzados}'' \cite{gonzales11}.
 
@@ -86,7 +86,7 @@ La cuarta generación es muy parecida a la tercera solo que añade una configura
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=9cm]{imagenes/introduccion/tch}
-		\caption{Cuarta generación de aparatos de tomografía computarizada \cite{garcia14}}
+		\caption{TC helicoidal \cite{garcia14}}
 		\label{fig:introduccion/tch}
 	\end{figure}
 	
@@ -109,8 +109,6 @@ La cuarta generación es muy parecida a la tercera solo que añade una configura
 	\end{figure}
 
 \end{itemize}
-
-
 
 \section{Esculturas de madera policromadas}
 
@@ -188,11 +186,11 @@ A partir del Barroco se mejora esta técnica realizando ensamblados en hueco par
 
 \section{Estado del arte}
 
-Como ya se ha comentado anteriormente, este trabajo es la continuación del trabajo fin de grado que realicé. Durante este trabajo fin de grado resolví el problema de la visualización de datos volumétricos de esculturas de madera policromada \cite{bolivar16}. Pero no realizaba ningún pre-procesamiento, tan solo se visualizaban permitiendo explorar la escultura en su interior. Toda la información que obtenía el experto que usase el programa debía ser anotada a mano a parte pues tampoco se proporcionaba funcionalidad para almacenar esta información para poder ser rescatada posteriormente.
+Como ya se ha comentado anteriormente, este trabajo es la continuación del trabajo fin de grado que realicé. Durante este trabajo fin de grado se resolvió el problema de la visualización de datos volumétricos de esculturas de madera policromada \cite{bolivar16}. Pero no se realizaba ningún pre-procesamiento, tan solo se visualizaban los datos permitiendo explorar la escultura en su interior. Toda la información que obtenía el experto que usase el programa debía ser anotada a mano a parte, pues tampoco se proporcionaba funcionalidad para almacenar esta información para poder ser rescatada posteriormente.
 
 Este trabajo se divide en tres bloques: pre-procesamiento, documentación y segmentación. 
 
-Los dos primeros están incluidos en la mayoría de los programas disponibles en la web de visualización de datos volumétricos. Tales como AMILab \cite{krissian12}, RadiAnt \cite{radiant}, Slicer \cite{fedorov12} o el usado por María Francisca en su estudio \cite{sarrio16} OsiriX \cite{rosset04} en el que me he inspirado para realizar mi implementación. Todas estas herramientas son muy completas, pero los resultados obtenidos al visualizar los datos volumétricos de esculturas de madera policromadas dejaban mucho que desear y el gran número de funciones específicas para la medicina los hacen complejos de más, y es que por esta razón surgió la idea de crear un software específico de visualización de datos volumétricos de esculturas.
+Los dos primeros están incluidos en la mayoría de los programas disponibles en la web de visualización de datos volumétricos. Tales como AMILab \cite{krissian12}, RadiAnt \cite{radiant}, Slicer \cite{fedorov12} o el usado por María Francisca en su estudio \cite{sarrio16} OsiriX \cite{rosset04} en el que me he inspirado para realizar mi implementación. Todas estos programas son muy completos, pero los resultados obtenidos al visualizar los datos volumétricos de esculturas de madera policromadas dejan mucho que desear y el gran número de funciones específicas para la medicina los hacen complejos de más, y es que por esta razón surgió la idea de crear un software específico de visualización de datos volumétricos de esculturas.
 
 El tercer bloque, el de la segmentación, es totalmente novedoso pues no hay ningún tipo de segmentación específica para separar distintos trozos de madera. Sin embargo, antes de programar un algoritmo específico habría que probar con los que ya hay disponibles que además son muy usados en el campo de la medicina.
 
@@ -210,11 +208,11 @@ La segmentación manual la podríamos descartar automáticamente. Pese a que es 
 
 Los métodos de segmentación basada en umbrales \cite{otsu79} se basan en definir un umbral en los valores escalares de cada vóxel para diferenciar las distintas partes del volumen. Estos no nos son útiles pues las distintas piezas de madera suelen ser del mismo material y coincidir en estos valores de densidad.
 
-Los métodos de segmentación basada en crecimiento de regiones que utilizan umbrales \cite{haralick85} tampoco nos van a servir pues las distintas piezas de madera se encuentran juntas. Otros métodos de segmentación basada en regiones como la transformación divisoria (\textit{watershed}) \cite{beucher79} tampoco nos van a servir pues se definirían muchas cuencas debido a los anillos que presentan los cortes de la madera y si se empiezan a inundar para obtener regiones más grandes obtendremos un resultado similar al que obtenemos con el de crecimiento de regiones con umbrales.
+Los métodos de segmentación basada en crecimiento de regiones que utilizan umbrales \cite{haralick85} tampoco nos van a servir pues las distintas piezas de madera se encuentran juntas. Otros métodos de segmentación basada en regiones como la transformación divisoria (\textit{watershed}) \cite{beucher79} tampoco servirían, pues se definirían muchas cuencas debido a los anillos que presentan los cortes de la madera y si se empiezan a inundar para obtener regiones más grandes se obtendría un resultado similar al que obtenemos con el de crecimiento de regiones con umbrales.
 
 Los métodos de segmentación basados en bordes como el \textit{livewire} \cite{mortensen95} podrían resultar efectivos pues el borde que separa dos piezas de madera es visualmente diferenciable. No obstante, este método necesita de una supervisión humana y, aunque sea más preciso y rápido que una segmentación manual, se debería seguir realizando corte a corte.
 
-Como vemos, ninguno de los métodos que no requieren de supervisión humana son efectivos a la hora de resolver nuestro problema. Es por ello que, definitivamente, hay que desarrollar uno propio.
+Como podemos ver, ninguno de los métodos que no requieren de supervisión humana son efectivos a la hora de resolver nuestro problema. Es por ello que, definitivamente, hay que desarrollar uno propio.
 
 \section{Motivación}
 
